@@ -31,8 +31,8 @@ MAPA:
 	sw $ra,0($sp)
 	la $s0,map
 	li $s1,0
-	li $s2,119
-	la $s3,X
+	li $s2,118
+	li $s3,158
 while_mapa:
 	beq $s2,$zero,exit_mapa	
 	beq $s1,$s3,reseta_x
@@ -66,20 +66,20 @@ PONTO:
 	move $s4, $a1
 	add $a0,$s0,$s3 # $a0 = xc+x
 	add $a1,$s1,$s4 # $a1 = yc+y
-	move $a2,$a2
-	jal PIXEL # xc+x0XFF, yc-y
+	move $a2,$s2
+	jal PIXEL # xc+x, yc-y
 	add $a0,$s0,$s3 # $a0 = xc+x
 	sub $a1,$s1,$s4 # $a1 = yc-y
 	move $a2,$s2 # $a2 = cor
-	jal PIXEL # xc+x0XFF, yc-y
+	jal PIXEL # xc+x, yc-y
 	sub $a0,$s0,$s3 # $a0 = xc-x
 	add $a1,$s1,$s4 # $a1 = yc+y
 	move $a2,$s2 # $a2 = cor
-	jal PIXEL # xc-x0xFF, yc+y
+	jal PIXEL # xc-x, yc+y
 	sub $a0,$s0,$s3 # $a0 = xc-x
 	sub $a1,$s1,$s4 # $a1 = yc-y
 	move $a2,$s2 # $a2 = cor
-	jal PIXEL # xc-x0xFF, yc-y
+	jal PIXEL # xc-x, yc-y
 	lw $s0,0($sp)
 	lw $s1,4($sp)
 	lw $s2,8($sp)
