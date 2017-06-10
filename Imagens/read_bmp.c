@@ -17,9 +17,10 @@ corDistinta = fopen("cores_distintas.txt", "w");
  int count = 0;
  int j = 0;
  for(int i=0;i<54;i++) byte = getc(streamIn);  // strip out BMP header
-const char* string = ".byte";
-fprintf(bandeira, "%s ", string);
- for(int i=0;i<76800;i++){    // foreach pixel
+//const char* string = ".byte";
+//fprintf(bandeira, "%s ", string);
+int z = 100, h = 76800;
+ for(int i=0;i<h;i++){    // foreach pixel
     image[i][0] = getc(streamIn);  // use BMP 24bit with no alpha channel
     image[i][1] = getc(streamIn);  // BMP uses BGR but we want RGB, grab byte-by-byte
     image[i][2] = getc(streamIn);  // reverse-order array indexing fixes RGB issue...
@@ -35,7 +36,7 @@ fprintf(bandeira, "%s ", string);
     r = (r << 5);
     int temp, indicador = 0;
     temp = b+g+r;
-    fprintf(bandeira, "0x%X, ", (r+g+b));
+    fprintf(bandeira, "0x%X, ", temp);
     int k = 0;
     while(k <= j){
     	if(color[k] == temp){
@@ -47,7 +48,7 @@ fprintf(bandeira, "%s ", string);
     }
     if(indicador == 0){
         color[j] = temp;
-        fprintf(corDistinta, "0x%X\n", (r+g+b));
+        fprintf(corDistinta, "0x%X\n", temp;
         j++;
     }
     //printf("pixel %d : [%X,%X,%X]\n",i+1,image[i][0],image[i][1],image[i][2]);
