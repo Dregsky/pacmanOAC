@@ -48,7 +48,7 @@ int z = 100, h = 76800;
     }
     if(indicador == 0){
         color[j] = temp;
-        fprintf(corDistinta, "0x%X\n", temp;
+        fprintf(corDistinta, "0x%X\n", temp);
         j++;
     }
     //printf("pixel %d : [%X,%X,%X]\n",i+1,image[i][0],image[i][1],image[i][2]);
