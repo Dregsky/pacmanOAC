@@ -15,6 +15,7 @@
 	pac_man_open_top: .byte 0x0,0x0,0x3F,0x0,0x0,0x0,0x0,0x3F,0x0,0x0,0x0,0x3F,0x3F,0x0,0x0,0x0,0x0,0x3F,0x3F,0x0,0x3F,0x3F,0x3F,0x3F,0x0,0x0,0x0,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x0,0x0,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x0,0x3F,0x3F,0x3F,0x3F,0x3F,0x0,0x0,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x0,0x0,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x0,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x0,0x0,0x0,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x0,0x0
 
 	ERRO_PONTO: .asciiz "Ponto fora do limite\n"
+	ERRO_NAO_PODE: .asciiz "Não pode ir por aqui\n"
 
 .text
 
@@ -153,6 +154,10 @@ check_key:
 pac_move_right:
  	move $a0,$s0
  	move $a1,$s1
+ 	addi $a0,$a0,10
+ 	jal VERIFICA_POSSIBILIDADE
+ 	move $a0,$s0
+ 	move $a1,$s1
 	la $a3,quadrado_preto 			# reset quadrado
 	jal PRINT_DESENHO
 	addi $s0,$s0,8
@@ -175,6 +180,10 @@ pac_move_right:
 	j loop_ready_tecla
 	
 pac_move_left:
+	move $a0,$s0
+ 	move $a1,$s1
+ 	addi $a0,$a0,-10
+ 	jal VERIFICA_POSSIBILIDADE
  	move $a0,$s0
  	move $a1,$s1
 	la $a3,quadrado_preto 			# reset quadrado
@@ -199,6 +208,10 @@ pac_move_left:
 	j loop_ready_tecla	 
 
 pac_move_top:
+	move $a0,$s0
+ 	move $a1,$s1
+ 	addi $a1,$a1,-10
+ 	jal VERIFICA_POSSIBILIDADE
  	move $a0,$s0
  	move $a1,$s1
 	la $a3,quadrado_preto 			# reset quadrado
@@ -223,6 +236,10 @@ pac_move_top:
 	j loop_ready_tecla
 	
 pac_move_down:
+	move $a0,$s0
+ 	move $a1,$s1
+ 	addi $a1,$a1,10
+ 	jal VERIFICA_POSSIBILIDADE
  	move $a0,$s0
  	move $a1,$s1
 	la $a3,quadrado_preto 			# reset quadrado
@@ -245,3 +262,22 @@ pac_move_down:
 	la $a3,pac_man_open_down
 	jal PRINT_DESENHO
 	j loop_ready_tecla
+
+#$a0 = x, $a1 = y
+VERIFICA_POSSIBILIDADE: 	
+	la $t0, VGA_BASE
+	la $t2, X
+	la $t3, Y
+	mul $t1, $a1, $t2 			# $t1 = $a1(y) * 320; 
+	add $t1, $t1, $a0 			# $t1 = $t1($a1(y) * 320) + $a0(x); 
+	add $t0, $t0, $t1 			# $t0 = 0xFF000000 + y * 320 + x
+	lbu $t4, 0($t0) 			# carrega $t4 (cor) no byte que $t0 corresponde.
+	beqz $t4,possivel
+	seq $t0,$t4,0xFF			# $t0 = 1 se $t4 = 0xFF
+	bnez $t0,possivel			# $t0 = 1 vai para possivel
+	addi $v0,$zero,4 
+	la $a0, ERRO_NAO_PODE
+	syscall
+	j loop_ready_tecla			# se chegar aqui, $t4(cor da posicao) não é preto (0x0) ou branco (0xFF)
+possivel:
+	jr $ra
