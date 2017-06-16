@@ -1,6 +1,8 @@
 .eqv VGA_BASE 0xFF000000
 .eqv X 320 # 320 - 10
 .eqv Y 240 # 240 - 10
+.eqv Xmap 32
+.eqv Ymap 24
 
 .data
 	map_vetor: .byte 0x00,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFA,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFA,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0xFF,0x99,0xFF,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0xFF,0x99,0xFF,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0xFF,0xFF,0xFF,0x99,0xFF,0xFF,0xFF,0x99,0x99,0x99,0x99,0x99,0xFF,0xFF,0xFF,0x99,0xFF,0xFF,0xFF,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0x99,0x99,0x99,0xFF,0x99,0x99,0x99,0x00,0x99,0x99,0x99,0x99,0x99,0x00,0x99,0x99,0x99,0xFF,0x99,0x99,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0x00,0x99,0x99,0xAD,0xAD,0xAD,0x99,0x99,0x00,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0x00,0x99,0x99,0x00,0x00,0x00,0x99,0x99,0x00,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x00,0x00,0x00,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x00,0x00,0x00,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0x00,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x00,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFA,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFA,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0xFF,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0xFF,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0x99,0xFF,0x99,0xFF,0x99,0xFF,0x99,0x99,0x99,0x99,0xFF,0x99,0x99,0x99,0x99,0xFF,0x99,0xFF,0x99,0xFF,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0x99,0xFF,0x99,0xFF,0x99,0xFF,0x99,0x99,0x99,0x99,0xFF,0x99,0x99,0x99,0x99,0xFF,0x99,0xFF,0x99,0xFF,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0xFF,0xFF,0xFF,0x99,0xFF,0xFF,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0xFF,0xFF,0x99,0xFF,0xFF,0xFF,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0x99,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0x99,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
@@ -25,7 +27,14 @@
 	ghost_green: .byte 0x0,0x0,0x2A,0x2A,0x2A,0x2A,0x2A,0x2A,0x0,0x0,0x0,0x2A,0x2A,0x2A,0x2A,0x2A,0x2A,0x2A,0x2A,0x0,0x2A,0x2A,0xFF,0x2A,0x2A,0x2A,0x2A,0xFF,0x2A,0x2A,0x2A,0xFF,0x0,0xFF,0x2A,0x2A,0xFF,0x0,0xFF,0x2A,0x2A,0xFF,0xFF,0x2A,0x2A,0x2A,0x2A,0xFF,0xFF,0x2A,0x2A,0x2A,0x2A,0x2A,0x2A,0x2A,0x2A,0x2A,0x2A,0x2A,0x2A,0x2A,0x2A,0xFF,0x2A,0x2A,0xFF,0x2A,0x2A,0x2A,0x2A,0x2A,0x2A,0x2A,0xFF,0xFF,0x2A,0x2A,0x2A,0x2A,0x2A,0x2A,0x0,0x2A,0x2A,0x2A,0x2A,0x0,0x2A,0x2A,0x2A,0x0,0x0,0x0,0x2A,0x2A,0x0,0x0,0x0,0x2A
 	ghost_pink: .byte 0x0,0x0,0x87,0x87,0x87,0x87,0x87,0x87,0x0,0x0,0x0,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0x0,0x87,0x87,0xFF,0x87,0x87,0x87,0x87,0xFF,0x87,0x87,0x87,0xFF,0x0,0xFF,0x87,0x87,0xFF,0x0,0xFF,0x87,0x87,0xFF,0xFF,0x87,0x87,0x87,0x87,0xFF,0xFF,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0xFF,0x87,0x87,0xFF,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0xFF,0xFF,0x87,0x87,0x87,0x87,0x87,0x87,0x0,0x87,0x87,0x87,0x87,0x0,0x87,0x87,0x87,0x0,0x0,0x0,0x87,0x87,0x0,0x0,0x0,0x87
 	ghost_blue: .byte 0x0,0x0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0x0,0x0,0x0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0x0,0xC0,0xC0,0xFF,0xC0,0xC0,0xC0,0xC0,0xFF,0xC0,0xC0,0xC0,0xFF,0x0,0xFF,0xC0,0xC0,0xFF,0x0,0xFF,0xC0,0xC0,0xFF,0xFF,0xC0,0xC0,0xC0,0xC0,0xFF,0xFF,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xFF,0xC0,0xC0,0xFF,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xFF,0xFF,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0x0,0xC0,0xC0,0xC0,0xC0,0x0,0xC0,0xC0,0xC0,0x0,0x0,0x0,0xC0,0xC0,0x0,0x0,0x0,0xC0
-	
+	#
+	#		   x,y,score,ultima_tecla	
+	pac_amarelo: .word 2,22,0,0x64
+	pac_vermelho: .word 22,22,0,0x66
+	#		      x,y,layer anterior
+	fantasma_verde: .word 11,10,0x00
+	fantasma_rosa: .word 12,10,0x00
+	fantasma_azul: .word 13,10,0x00
 	ERRO_PONTO: .asciiz "Ponto fora do limite\n"
 
 .text
@@ -95,6 +104,7 @@ return_desenho_escolha:
 	lw $ra,0($sp)
 	addi $sp,$sp,4
 	jr $ra
+
 # $a0 = x, $a1 = y, $a3 = endereco_inicio_desenho, $a2 indicador se ler da memoria ou de constante	
 PRINT_DESENHO:
 	addi $sp,$sp,-32
@@ -145,6 +155,66 @@ exit_desenho:
 	addi $sp,$sp,32
 	jr $ra
 
+# $a0 = x, $a1 = y, $a3 = desenho	
+PRINT_LINHA_VERTICAL:
+	addi $sp,$sp,-20
+	sw $ra,16($sp)
+	sw $s0,12($sp)
+	sw $s1,8($sp)
+	sw $s2,4($sp)
+	sw $s3,0($sp)
+	#		
+	move $s0,$a0					# $s0 = x inicio
+	move $s1,$a1 					# $s1 = y inicio
+	addi $s2,$a1,10					# $s2 = y + 10 (y final)
+	move $s3,$a3
+while_desenho_vertical:
+	beq $s1,$s2,exit_desenho_vertical	
+	move $a0,$s0
+	move $a1,$s1
+	move $a2,$s3
+	jal PONTO
+	addi $s1,$s1,1
+	j while_desenho_vertical
+exit_desenho_vertical:
+	lw $ra,16($sp)
+	lw $s0,12($sp)
+	lw $s1,8($sp)
+	lw $s2,4($sp)
+	lw $s3,0($sp)
+	addi $sp,$sp,20
+	jr $ra
+	
+# $a0 = x, $a1 = y, $a3 = desenho	
+PRINT_LINHA_HORIZONTAL:
+	addi $sp,$sp,-20
+	sw $ra,16($sp)
+	sw $s0,12($sp)
+	sw $s1,8($sp)
+	sw $s2,4($sp)
+	sw $s3,0($sp)
+	#		
+	move $s0,$a0					# $s0 = x inicio
+	move $s1,$a1 					# $s1 = y inicio
+	addi $s2,$a0,10					# $s2 = y + 10 (y final)
+	move $s3,$a3
+while_desenho_horizontal:
+	beq $s0,$s2,exit_desenho_horizontal	
+	move $a0,$s0
+	move $a1,$s1
+	move $a2,$s3
+	jal PONTO
+	addi $s0,$s0,1
+	j while_desenho_horizontal
+exit_desenho_horizontal:
+	lw $ra,16($sp)
+	lw $s0,12($sp)
+	lw $s1,8($sp)
+	lw $s2,4($sp)
+	lw $s3,0($sp)
+	addi $sp,$sp,20
+	jr $ra
+				
 #$a0 = x, $a1 =y , $a2 = cor	
 PONTO: 	la $t0, VGA_BASE
 	la $t2, X
@@ -171,7 +241,9 @@ START:
 	li $t0, 0xffff
 	jal init_pac_yellow
 	jal init_pac_red
-	jal start_ghost
+	jal init_ghost_green
+	jal init_ghost_pink
+	jal init_ghost_blue
 loop_ready_tecla:
 	mtc0 $0, $9				# Reinicia o campo em ms
 	jal stop_50
@@ -227,45 +299,52 @@ moves_check:
 
 	     
 init_pac_yellow:
-	addi $sp,$sp,-16
-	li $s0,20 				# x inicial pac yellow e
-	li $s1,220				# y inicial pac yellow
-	li $t1, 0x64                		# Carrega a tecla 'd' direita
-	sw $s0,0($sp)				# empilha x
-	sw $s1,4($sp)				# empilha y
-	sw $zero,8($sp)				# escore pac
-	sw $t1,12($sp)
 	addi $sp,$sp,-4
 	sw $ra,0($sp)
-	move $a0,$s0
-	move $a1,$s1
+	la $t0,pac_amarelo
 	la $a3,pac_man_yellow_open_right
-	jal PRINT_DESENHO
-	lw $ra,0($sp)
-	addi $sp,$sp,4
-	jr $ra
+	j init_personagens
 
 init_pac_red:
-	addi $sp,$sp,-16
-	li $s0,220 				# x inicial pac red e
-	li $s1,220				# y inicial pac red
-	li $t1, 0x66				# Carrega a tecla 'f' esquerda
-	sw $s0,0($sp)				# empilha x
-	sw $s1,4($sp)				# empilha y
-	sw $zero,8($sp)	
-	sw $t1,12($sp)				# escore pac
 	addi $sp,$sp,-4
 	sw $ra,0($sp)
-	move $a0,$s0
-	move $a1,$s1
+	la $t0,pac_vermelho
 	la $a3,pac_man_red_open_left
-	jal PRINT_DESENHO
+	j init_personagens
+	
+init_ghost_green:
+	addi $sp,$sp,-4
+	sw $ra,0($sp)
+	la $t0,fantasma_verde
+	la $a3,ghost_green
+	j init_personagens
+	
+init_ghost_pink:
+	addi $sp,$sp,-4
+	sw $ra,0($sp)
+	la $t0,fantasma_rosa
+	la $a3,ghost_pink
+	j init_personagens
+		
+init_ghost_blue:
+	addi $sp,$sp,-4
+	sw $ra,0($sp)
+	la $t0,fantasma_azul
+	la $a3,ghost_blue
+	j init_personagens
+	
+init_personagens:
+	lw $a0,0($t0)				# x inicial personagem
+	lw $a1,4($t0)				# y inicial personagem
+	mul $a0,$a0,10
+	mul $a1,$a1,10
+	jal PRINT_DESENHO			# $a3 carrega o desenho que será printado
 	lw $ra,0($sp)
 	addi $sp,$sp,4
 	jr $ra
 			
 move_pac_yellow:
-	addi $s4,$sp,40				# guarda em $s4 o inicio de x do pac yellow 24(8 de cada fantasma) + 16 do pac_red
+	la $s4,pac_amarelo
 	lw $s0,0($s4)
 	lw $s1,4($s4)
 	seq $t1,$s7,0x3f			# Verifica se $s7 = yellow	
@@ -297,7 +376,7 @@ continue_pac_yellow:				# atualiza o valor para ultima tecla apertada
 	j return_move
 
 move_pac_red:
-	addi $s4,$sp,24				# guarda em $s4 o inicio de x do pac red 24(8 de cada fantasma)
+	la $s4,pac_vermelho
 	lw $s0,0($s4)
 	lw $s1,4($s4)
 	seq $t1,$s7,0x07			# Verifica se $s7 = red
@@ -336,125 +415,157 @@ return_move:
 move_right:
  	move $a0,$s0
  	move $a1,$s1
- 	addi $a0,$a0,10
+ 	addi $a0,$a0,1
  	jal VERIFICA_POSSIBILIDADE
+ 	addi $t0,$s0,1				
+ 	sw $t0,0($s4)				# Salva nova coordenada x
+	sw $s1,4($s4)				# Salva nova coordenada y
+ 	mul $s0,$s0,10				
+	mul $s1,$s1,10
  	sw $s5,12($s4)				# atualiza o valor para ultima tecla apertada
- 	move $a0,$s0
+ 	li $s6,0
+loop_move_right:
+  	move $a0,$s0
  	move $a1,$s1
-	la $a3,quadrado_preto 			# reset quadrado
-	jal PRINT_DESENHO
-	addi $s0,$s0,5
+	li $a3,0x00 				# reset quadrado
+	jal PRINT_LINHA_VERTICAL
+	addi $s0,$s0,1
 	move $a0,$s0
 	move $a1,$s1
 	move $a3,$s3 				# $s3 contem o desenho respectivo 
 	jal PRINT_DESENHO
-	li $a0,200
-	li $v0,32
-	syscall
+	jal stop_500
+	#li $a0,100
+	#li $v0,32
+	#syscall
 	move $a0,$s0
 	move $a1,$s1
-	la $a3,quadrado_preto 			# reset quadrado
-	jal PRINT_DESENHO
-	addi $s0,$s0,5
+	li $a3,0x00	 			# reset quadrado
+	jal PRINT_LINHA_VERTICAL
+	addi $s0,$s0,1
 	move $a0,$s0
 	move $a1,$s1
 	move $a3,$s2				# $s2 contem o desenho respectivo
 	jal PRINT_DESENHO
-	sw $s0,0($s4)
-	sw $s1,4($s4)
+	addi $s6,$s6,1
+	bne $s6,5,loop_move_right
 	j return_move
 	
 move_left:
 	move $a0,$s0
  	move $a1,$s1
- 	addi $a0,$a0,-10
+ 	addi $a0,$a0,-1
  	jal VERIFICA_POSSIBILIDADE
+ 	addi $t0,$s0,-1				
+ 	sw $t0,0($s4)				# Salva nova coordenada x
+	sw $s1,4($s4)				# Salva nova coordenada y
+ 	mul $s0,$s0,10				
+	mul $s1,$s1,10
  	sw $s5,12($s4)				# atualiza o valor para ultima tecla apertada
- 	move $a0,$s0
+ 	li $s6,0
+loop_move_left:
+ 	addi $a0,$s0,9
  	move $a1,$s1
-	la $a3,quadrado_preto 			# reset quadrado
-	jal PRINT_DESENHO
-	addi $s0,$s0,-8
+	li $a3,0x00 				# reset quadrado
+	jal PRINT_LINHA_VERTICAL
+	addi $s0,$s0,-1
 	move $a0,$s0
 	move $a1,$s1
 	move $a3,$s3 				# $s3 contem o desenho respectivo 
 	jal PRINT_DESENHO
-	li $a0,200
-	li $v0,32
-	syscall
-	move $a0,$s0
+	jal stop_500
+	#li $a0,100
+	#li $v0,32
+	#syscall
+	addi $a0,$s0,9
 	move $a1,$s1
-	la $a3,quadrado_preto 			# reset quadrado
-	jal PRINT_DESENHO
-	addi $s0,$s0,-2
+	li $a3,0x00 				# reset quadrado
+	jal PRINT_LINHA_VERTICAL
+	addi $s0,$s0,-1
 	move $a0,$s0
 	move $a1,$s1
 	move $a3,$s2				# $s2 contem o desenho respectivo
 	jal PRINT_DESENHO
-	sw $s0,0($s4)
-	sw $s1,4($s4)
+	addi $s6,$s6,1
+	bne $s6,5,loop_move_left
 	j return_move	 
 
 move_top:
 	move $a0,$s0
  	move $a1,$s1
- 	addi $a1,$a1,-10
+ 	addi $a1,$a1,-1
  	jal VERIFICA_POSSIBILIDADE
+ 	addi $t1,$s1,-1				
+ 	sw $s0,0($s4)				# Salva nova coordenada x
+	sw $t1,4($s4)				# Salva nova coordenada y
+ 	mul $s0,$s0,10				
+	mul $s1,$s1,10
  	sw $s5,12($s4)				# atualiza o valor para ultima tecla apertada
+	li $s6,0
+loop_move_top:
  	move $a0,$s0
- 	move $a1,$s1
-	la $a3,quadrado_preto 			# reset quadrado
-	jal PRINT_DESENHO
-	addi $s1,$s1,-8
+ 	addi $a1,$s1,9
+	li $a3,0x00 				# reset quadrado
+	jal PRINT_LINHA_HORIZONTAL
+	addi $s1,$s1,-1
 	move $a0,$s0
 	move $a1,$s1
 	move $a3,$s3 				# $s3 contem o desenho respectivo 
 	jal PRINT_DESENHO
-	li $a0,200
-	li $v0,32
-	syscall
+	jal stop_500
+	#li $a0,100
+	#li $v0,32
+	#syscall
 	move $a0,$s0
-	move $a1,$s1
-	la $a3,quadrado_preto 			# reset quadrado
-	jal PRINT_DESENHO
-	addi $s1,$s1,-2
+ 	addi $a1,$s1,9
+	li $a3,0x00 				# reset quadrado
+	jal PRINT_LINHA_HORIZONTAL
+	addi $s1,$s1,-1
 	move $a0,$s0
 	move $a1,$s1
 	move $a3,$s2				# $s2 contem o desenho respectivo
 	jal PRINT_DESENHO
-	sw $s0,0($s4)
-	sw $s1,4($s4)
+	addi $s6,$s6,1
+	bne $s6,5,loop_move_top
 	j return_move
 	
 move_down:
 	move $a0,$s0
  	move $a1,$s1
- 	addi $a1,$a1,10
+ 	addi $a1,$a1,1
  	jal VERIFICA_POSSIBILIDADE
+ 	addi $t1,$s1,1				# Incrementa a posicao em 1
+ 	sw $s0,0($s4)				# Salva nova coordenada x
+	sw $t1,4($s4)				# Salva nova coordenada y
+ 	mul $s0,$s0,10				
+	mul $s1,$s1,10
  	sw $s5,12($s4)				# atualiza o valor para ultima tecla apertada
+ 	li $s6,0
+loop_move_down:
  	move $a0,$s0
  	move $a1,$s1
-	la $a3,quadrado_preto 			# reset quadrado
-	jal PRINT_DESENHO
-	addi $s1,$s1,8
+	li $a3,0x00 				# reset quadrado
+	jal PRINT_LINHA_HORIZONTAL
+	addi $s1,$s1,1
 	move $a0,$s0
 	move $a1,$s1
 	move $a3,$s3 				# $s3 contem o desenho respectivo 
 	jal PRINT_DESENHO
-	li $a0,200
-	li $v0,32
-	syscall
+	jal stop_500
+	#li $a0,100
+	#li $v0,32
+	#syscall
 	move $a0,$s0
 	move $a1,$s1
-	la $a3,quadrado_preto 			# reset quadrado
-	jal PRINT_DESENHO
-	addi $s1,$s1,2
+	li $a3,0x00 				# reset quadrado
+	jal PRINT_LINHA_HORIZONTAL
+	addi $s1,$s1,1
 	move $a0,$s0
 	move $a1,$s1
 	move $a3,$s2				# $s2 contem o desenho respectivo
 	jal PRINT_DESENHO
-	sw $s0,0($s4)
-	sw $s1,4($s4)
+	addi $s6,$s6,1
+	bne $s6,5,loop_move_down
 	j return_move
 
 #$a0 = x, $a1 = y
@@ -464,19 +575,6 @@ VERIFICA_POSSIBILIDADE:
 	sw $s0,4($sp)
 	sw $s1,0($sp)
 	jal possibilidade_ponto
-	move $s0,$a0
-	move $s1,$a1
-	addi $a0,$s0,-1
-	jal possibilidade_ponto 		# testa o ponto (x-1,y)
-	move $a1,$s1
-	addi $a0,$s0,1				
-	jal possibilidade_ponto			# testa o ponto (x+1,y)
-	move $a0,$s0
-	addi $a1,$s1,-1
-	jal possibilidade_ponto			# testa o ponto (x,y-1)
-	move $a0,$s0
-	addi $a1,$s1,1
-	jal possibilidade_ponto			# testa o ponto (x,y+1)
 	lw $s1,0($sp)
 	lw $s0,4($sp)
 	lw $ra,8($sp)
@@ -485,279 +583,119 @@ VERIFICA_POSSIBILIDADE:
 	
 #a0 = x, $a1 = y				
 possibilidade_ponto:
-	la $t0, VGA_BASE
-	la $t2, X
-	la $t3, Y
-	mul $t1, $a1, $t2 			# $t1 = $a1(y) * 320; 
-	add $t1, $t1, $a0 			# $t1 = $t1($a1(y) * 320) + $a0(x); 
-	add $t0, $t0, $t1 			# $t0 = 0xFF000000 + y * 320 + x
-	lbu $t4, 0($t0) 			# carrega $t4 (cor) no byte que $t0 corresponde.
-	beqz $t4,possivel
-	seq $t0,$t4,0xFF			# $t0 = 1 se $t4 = 0xFF
+	la $t0, map_vetor
+	la $t2, Xmap
+	mul $t1, $a1, $t2 			# $t1 = $a1(y) * 32 ; 
+	add $t1, $t1, $a0 			# $t1 = $t1($a1(y) * 32) + $a0(x); 
+	add $t0, $t0, $t1 			# $t0 = map_vetor + y * 320 + x
+	lbu $t4, 0($t0) 			# carrega $t4 (layer) no byte que $t0 corresponde.
+	beqz $t4,possivel			# $t4 igual a 0x00(preto)
+	seq $t0,$t4,0xFF			# $t0 = 1 se $t4 = 0xFF (comida)
+	bnez $t0,possivel			# $t0 = 1 vai para possivel
+	seq $t0,$t4,0xFA			# $t0 = 1 se $t4 = 0xFA (comidona)
 	bnez $t0,possivel			# $t0 = 1 vai para possivel
 	lw $s1,0($sp)
 	lw $s0,4($sp)
 	lw $ra,8($sp)
 	addi $sp,$sp,12
-	addi $v0,$zero,4 			# x ou y estão fora do limite
-	la $a0, ERRO_PONTO
-	syscall
-	j return_move				# se chegar aqui, $t4(cor da posicao) não é preto (0x0) ou branco (0xFF)
+	j return_move				# se chegar aqui, $t4(cor da posicao) não é preto (0x00) ou branco (0xFF)
 possivel:
-	jr $ra
-
-start_ghost:
-	move $s6,$ra
-	jal start_ghost_green
-	jal start_ghost_pink
-	jal start_ghost_blue
-	jr $s6
-	
-start_ghost_green:
-	addi $sp,$sp,-8
-	li $a0,110
-	li $a1,90
-	la $a3,ghost_green
-	sw $a0,0($sp)
-	sw $a1,4($sp)
-	addi $sp,$sp,-4
-	sw $ra,0($sp)
-	jal PRINT_DESENHO
-	lw $ra,0($sp)
-	addi $sp,$sp,4
-	jr $ra
-	
-start_ghost_pink:
-	addi $sp,$sp,-8
-	li $a0,120
-	li $a1,90
-	la $a3,ghost_pink
-	sw $a0,0($sp)
-	sw $a1,4($sp)
-	addi $sp,$sp,-4
-	sw $ra,0($sp)
-	jal PRINT_DESENHO
-	lw $ra,0($sp)
-	addi $sp,$sp,4
-	jr $ra
-		
-start_ghost_blue:
-	addi $sp,$sp,-8
-	li $a0,130
-	li $a1,90
-	la $a3,ghost_blue
-	sw $a0,0($sp)
-	sw $a1,4($sp)
-	addi $sp,$sp,-4
-	sw $ra,0($sp)
-	jal PRINT_DESENHO
-	lw $ra,0($sp)
-	addi $sp,$sp,4
 	jr $ra
 
 move_ghosts:
 	addi $sp,$sp,-4
 	sw $ra,0($sp)
-	jal move_ghost_pink
 	jal move_ghost_green
+	jal move_ghost_pink
 	jal move_ghost_blue
 	lw $ra,0($sp)
 	addi $sp,$sp,4
 	jr $ra
-	
-move_ghost_pink:
-	addi $s4,$sp,12				# 8 bits ghost blue + 4 bits do $sp que guarda o ra do procedimento que chama ess
-	lw $s0,0($s4)
-	lw $s1,4($s4)
-	addi $sp,$sp,-4
-	sw $ra,0($sp)
-	seq $t0,$s0,111
-	beqz $t0,return_move			# se $t0 for zero $s0 já não é 101 e ele sai
-	seq $t1,$s1,103
-	beq $t0,$t1,move_ghost_pink_init	# chegou aqui $t0 = 1 se $t1 = 1 o fantasma ta no ponto inicial
-	j return_move
 
 move_ghost_green:
-	addi $s4,$sp,20				# 16 bits ghost pink e blue(8 de cada) + 4 bits do $sp que guarda o ra do procedimento que chama ess
-	lw $s0,0($s4)
-	lw $s1,4($s4)
 	addi $sp,$sp,-4
 	sw $ra,0($sp)
-	seq $t0,$s0,101
-	beqz $t0,return_move			# se $t0 for zero $s0 já não é 101 e ele sai
-	seq $t1,$s1,103
-	beq $t0,$t1,move_ghost_green_init	# chegou aqui $t0 = 1 se $t1 = 1 o fantasma ta no ponto inicial
+	la $s4,fantasma_verde
+	lw $s0,0($s4)
+	lw $s1,4($s4)
+	la $s3,ghost_green
+	seq $t0,$s0,11
+	beqz $t0,return_move			# se $t0 for zero $s0 já não é 11 e ele sai
+	seq $t1,$s1,10
+	beq $t0,$t1,move_ghost_init		# chegou aqui $t0 = 1 se $t1 = 1 o fantasma ta no ponto inicial
+	j return_move	
+	
+move_ghost_pink:
+	addi $sp,$sp,-4
+	sw $ra,0($sp)
+	la $s4,fantasma_rosa
+	lw $s0,0($s4)
+	lw $s1,4($s4)
+	la $s3,ghost_pink
+	seq $t0,$s0,12
+	beqz $t0,return_move			# se $t0 for zero $s0 já não é 12 e ele sai
+	seq $t1,$s1,10
+	beq $t0,$t1,move_ghost_init		# chegou aqui $t0 = 1 se $t1 = 1 o fantasma ta no ponto inicial
 	j return_move
 	
 move_ghost_blue:
-	addi $s4,$sp,4				# 4 bits do $sp que guarda o ra do procedimento que chama ess
-	lw $s0,0($s4)
-	lw $s1,4($s4)
 	addi $sp,$sp,-4
 	sw $ra,0($sp)
-	seq $t0,$s0,121
-	beqz $t0,return_move			# se $t0 for zero $s0 já não é 101 e ele sai
-	seq $t1,$s1,103
-	beq $t0,$t1,move_ghost_blue_init	# chegou aqui $t0 = 1 se $t1 = 1 o fantasma ta no ponto inicial
+	la $s4,fantasma_azul
+	lw $s0,0($s4)
+	lw $s1,4($s4)
+	la $s3,ghost_blue
+	seq $t0,$s0,13
+	beqz $t0,return_move			# se $t0 for zero $s0 já não é 13 e ele sai
+	seq $t1,$s1,10
+	beq $t0,$t1,move_ghost_init		# chegou aqui $t0 = 1 se $t1 = 1 o fantasma ta no ponto inicial
 	j return_move
 
-move_ghost_pink_init:
+move_ghost_init:
 	move $a0,$s0
  	move $a1,$s1
- 	la $s3,ghost_pink 
+ 	addi $t1,$s1,-2				
+ 	sw $s0,0($s4)				# Salva nova coordenada x
+	sw $t1,4($s4)				# Salva nova coordenada y
+ 	mul $s0,$s0,10				
+	mul $s1,$s1,10
+ 	move $a0,$s0
+ 	move $a1,$s1
 	la $a3,quadrado_preto 			# reset quadrado
 	jal PRINT_DESENHO
-	#
 	addi $s1,$s1,-10
 	move $a0,$s0
 	move $a1,$s1
 	move $a3,$s3 				# $s3 contem o desenho respectivo 
 	jal PRINT_DESENHO
-	# timeout
-	#
+	#li $a0,200
+	#li $v0,32
+	#syscall
 	move $a0,$s0
 	move $a1,$s1
 	la $a3,quadrado_cinza 			# reset quadrado
 	jal PRINT_DESENHO
-	#
 	addi $s1,$s1,-10
 	move $a0,$s0
 	move $a1,$s1
-	move $a3,$s3 				# $s3 contem o desenho respectivo 
+	move $a3,$s3				# $s2 contem o desenho respectivo
 	jal PRINT_DESENHO
-	# timeout
-	#
-	move $a0,$s0
-	move $a1,$s1
-	la $a3,quadrado_preto 			# reset quadrado
-	jal PRINT_DESENHO
-	#
-	addi $s0,$s0,-5
-	move $a0,$s0
-	move $a1,$s1
-	move $a3,$s3 				# $s3 contem o desenho respectivo 
-	jal PRINT_DESENHO
-	# timeout
-	#
-	move $a0,$s0
-	move $a1,$s1
-	la $a3,quadrado_preto 			# reset quadrado
-	jal PRINT_DESENHO
-	#
-	addi $s0,$s0,-10
-	move $a0,$s0
-	move $a1,$s1
-	move $a3,$s3 				# $s3 contem o desenho respectivo 
-	jal PRINT_DESENHO
-	move $s2,$s3
-	j move_left	
-	
-move_ghost_green_init:
-	move $a0,$s0
- 	move $a1,$s1
- 	la $s3,ghost_green 
-	la $a3,quadrado_preto 			# reset quadrado
-	jal PRINT_DESENHO
-	#
-	addi $s0,$s0,10
-	move $a0,$s0
-	move $a1,$s1
-	move $a3,$s3 				# $s3 contem o desenho respectivo 
-	jal PRINT_DESENHO
-	# timeouts
-	#
-	move $a0,$s0
-	move $a1,$s1
-	la $a3,quadrado_preto 			# reset quadrado
-	jal PRINT_DESENHO
-	#
-	addi $s1,$s1,-10
-	move $a0,$s0
-	move $a1,$s1
-	move $a3,$s3 				# $s3 contem o desenho respectivo 
-	jal PRINT_DESENHO
-	# timeout
-	#
-	move $a0,$s0
-	move $a1,$s1
-	la $a3,quadrado_cinza 			# reset quadrado
-	jal PRINT_DESENHO
-	#
-	addi $s1,$s1,-10
-	move $a0,$s0
-	move $a1,$s1
-	move $a3,$s3 				# $s3 contem o desenho respectivo 
-	jal PRINT_DESENHO
-	# timeout
-	#
-	move $a0,$s0
-	move $a1,$s1
-	la $a3,quadrado_preto 			# reset quadrado
-	jal PRINT_DESENHO
-	#
-	addi $s0,$s0,5
-	move $a0,$s0
-	move $a1,$s1
-	move $a3,$s3 				# $s3 contem o desenho respectivo 
-	jal PRINT_DESENHO
-	move $s2,$s3
-	j move_right
+	j return_move
 
-move_ghost_blue_init:
-	move $a0,$s0
- 	move $a1,$s1
- 	la $s3,ghost_blue 
-	la $a3,quadrado_preto 			# reset quadrado
-	jal PRINT_DESENHO
-	#
-	addi $s0,$s0,-10
-	move $a0,$s0
-	move $a1,$s1
-	move $a3,$s3 				# $s3 contem o desenho respectivo 
-	jal PRINT_DESENHO
-	# timeout
-	#
-	move $a0,$s0
-	move $a1,$s1
-	la $a3,quadrado_preto 			# reset quadrado
-	jal PRINT_DESENHO
-	#
-	addi $s1,$s1,-10
-	move $a0,$s0
-	move $a1,$s1
-	move $a3,$s3 				# $s3 contem o desenho respectivo 
-	jal PRINT_DESENHO
-	# timeout
-	#
-	move $a0,$s0
-	move $a1,$s1
-	la $a3,quadrado_cinza 			# reset quadrado
-	jal PRINT_DESENHO
-	#
-	addi $s1,$s1,-10
-	move $a0,$s0
-	move $a1,$s1
-	move $a3,$s3 				# $s3 contem o desenho respectivo 
-	jal PRINT_DESENHO
-	# timeout
-	#
-	move $a0,$s0
-	move $a1,$s1
-	la $a3,quadrado_preto 			# reset quadrado
-	jal PRINT_DESENHO
-	#
-	addi $s0,$s0,-5
-	move $a0,$s0
-	move $a1,$s1
-	move $a3,$s3 				# $s3 contem o desenho respectivo 
-	jal PRINT_DESENHO
-	move $s2,$s3
-	j move_left
 			
 # Contador de 0 a 50 para dar um stop no código
 stop_50:
-	li $t0,-150
+	li $t0,-250
 loop_50:addi $t0,$t0,1
 	slti $t1,$t0,50
 	bnez $t1,loop_50	
+	jr $ra	
+	
+# Contador de 0 a 400 para dar um stop no código
+stop_500:
+	li $t0,-1000
+loop_500:
+	addi $t0,$t0,1
+	slti $t1,$t0,0
+	bnez $t1,loop_500	
 	jr $ra	
