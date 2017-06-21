@@ -26,13 +26,13 @@
 	ghost_pink: .byte 0x0,0x0,0x87,0x87,0x87,0x87,0x87,0x87,0x0,0x0,0x0,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0x0,0x87,0x87,0xFF,0x87,0x87,0x87,0x87,0xFF,0x87,0x87,0x87,0xFF,0x0,0xFF,0x87,0x87,0xFF,0x0,0xFF,0x87,0x87,0xFF,0xFF,0x87,0x87,0x87,0x87,0xFF,0xFF,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0xFF,0x87,0x87,0xFF,0x87,0x87,0x87,0x87,0x87,0x87,0x87,0xFF,0xFF,0x87,0x87,0x87,0x87,0x87,0x87,0x0,0x87,0x87,0x87,0x87,0x0,0x87,0x87,0x87,0x0,0x0,0x0,0x87,0x87,0x0,0x0,0x0,0x87
 	ghost_blue: .byte 0x0,0x0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0x0,0x0,0x0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0x0,0xC0,0xC0,0xFF,0xC0,0xC0,0xC0,0xC0,0xFF,0xC0,0xC0,0xC0,0xFF,0x0,0xFF,0xC0,0xC0,0xFF,0x0,0xFF,0xC0,0xC0,0xFF,0xFF,0xC0,0xC0,0xC0,0xC0,0xFF,0xFF,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xFF,0xC0,0xC0,0xFF,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xFF,0xFF,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0x0,0xC0,0xC0,0xC0,0xC0,0x0,0xC0,0xC0,0xC0,0x0,0x0,0x0,0xC0,0xC0,0x0,0x0,0x0,0xC0
 	#
-	#		   x,y,score,ultima_tecla	
-	pac_amarelo: .word 2,22,0,0x64
-	pac_vermelho: .word 22,22,0,0x66
-	#		      x,y,layer anterior
-	fantasma_verde: .word 11,10,0x00
-	fantasma_rosa: .word 12,10,0x00
-	fantasma_azul: .word 13,10,0x00
+	#		   x,y,score,ultima_tecla,cor,vidas	
+	pac_amarelo: .word 2,22,0,0x64,0x3F,3
+	pac_vermelho: .word 22,22,0,0x66,0x07,3
+	#		      x,y,tile anterior,cor
+	fantasma_verde: .word 11,10,0x00,0x2A
+	fantasma_rosa: .word 12,10,0x00,0x87
+	fantasma_azul: .word 13,10,0x00,0xC0
 	ERRO_PONTO: .asciiz "Ponto fora do limite\n"
 	SCORE: .asciiz "SCORE:"
 .text
@@ -476,6 +476,7 @@ return_move:
 move_right:
  	move $a0,$s0
  	move $a1,$s1
+ 	move $a2,$s4				# Guarda em $a2 o endereço do objeto(pac ou fantasma)
  	addi $a0,$a0,1
  	jal VERIFICA_POSSIBILIDADE
  	addi $t0,$s0,1				
@@ -495,7 +496,7 @@ loop_move_right:
 	move $a1,$s1
 	move $a3,$s3 				# $s3 contem o desenho respectivo 
 	jal PRINT_DESENHO
-	jal stop
+	jal stop2
 	#li $a0,100
 	#li $v0,32
 	#syscall
@@ -515,6 +516,7 @@ loop_move_right:
 move_left:
 	move $a0,$s0
  	move $a1,$s1
+ 	move $a2,$s4				# Guarda em $a2 o endereço do objeto(pac ou fantasma)
  	addi $a0,$a0,-1
  	jal VERIFICA_POSSIBILIDADE
  	addi $t0,$s0,-1				
@@ -534,7 +536,7 @@ loop_move_left:
 	move $a1,$s1
 	move $a3,$s3 				# $s3 contem o desenho respectivo 
 	jal PRINT_DESENHO
-	jal stop
+	jal stop2
 	#li $a0,100
 	#li $v0,32
 	#syscall
@@ -554,6 +556,7 @@ loop_move_left:
 move_top:
 	move $a0,$s0
  	move $a1,$s1
+ 	move $a2,$s4				# Guarda em $a2 o endereço do objeto(pac ou fantasma)
  	addi $a1,$a1,-1
  	jal VERIFICA_POSSIBILIDADE
  	addi $t1,$s1,-1				
@@ -573,7 +576,7 @@ loop_move_top:
 	move $a1,$s1
 	move $a3,$s3 				# $s3 contem o desenho respectivo 
 	jal PRINT_DESENHO
-	jal stop
+	jal stop2
 	#li $a0,100
 	#li $v0,32
 	#syscall
@@ -593,6 +596,7 @@ loop_move_top:
 move_down:
 	move $a0,$s0
  	move $a1,$s1
+ 	move $a2,$s4				# Guarda em $a2 o endereço do objeto(pac ou fantasma)
  	addi $a1,$a1,1
  	jal VERIFICA_POSSIBILIDADE
  	addi $t1,$s1,1				# Incrementa a posicao em 1
@@ -612,7 +616,7 @@ loop_move_down:
 	move $a1,$s1
 	move $a3,$s3 				# $s3 contem o desenho respectivo 
 	jal PRINT_DESENHO
-	jal stop
+	jal stop2
 	#li $a0,100
 	#li $v0,32
 	#syscall
@@ -629,40 +633,7 @@ loop_move_down:
 	bne $s6,5,loop_move_down
 	j return_move
 
-#$a0 = x, $a1 = y
-VERIFICA_POSSIBILIDADE: 	
-	addi $sp,$sp,-12
-	sw $ra,8($sp)
-	sw $s0,4($sp)
-	sw $s1,0($sp)
-	jal possibilidade_ponto
-	lw $s1,0($sp)
-	lw $s0,4($sp)
-	lw $ra,8($sp)
-	addi $sp,$sp,12
-	jr $ra
-	
-#a0 = x, $a1 = y				
-possibilidade_ponto:
-	la $t0, map_vetor
-	la $t2, Xmap
-	mul $t1, $a1, $t2 			# $t1 = $a1(y) * 32 ; 
-	add $t1, $t1, $a0 			# $t1 = $t1($a1(y) * 32) + $a0(x); 
-	add $t0, $t0, $t1 			# $t0 = map_vetor + y * 320 + x
-	lbu $t4, 0($t0) 			# carrega $t4 (layer) no byte que $t0 corresponde.
-	beqz $t4,possivel			# $t4 igual a 0x00(preto)
-	seq $t0,$t4,0xFF			# $t0 = 1 se $t4 = 0xFF (comida)
-	bnez $t0,possivel			# $t0 = 1 vai para possivel
-	seq $t0,$t4,0xFA			# $t0 = 1 se $t4 = 0xFA (comidona)
-	bnez $t0,possivel			# $t0 = 1 vai para possivel
-	lw $s1,0($sp)
-	lw $s0,4($sp)
-	lw $ra,8($sp)
-	addi $sp,$sp,12
-	j return_move				# se chegar aqui, $t4(cor da posicao) não é preto (0x00) ou branco (0xFF)
-possivel:
-	jr $ra
-
+# Move ghosts
 move_ghosts:
 	addi $sp,$sp,-4
 	sw $ra,0($sp)
@@ -751,20 +722,83 @@ loop_ghost_cinza:
 	bne $s6,10,loop_ghost_cinza
 	j return_move
 
-			
-# Contador de 0 a 50 para dar um stop no código
-stop2:
-	li $t0,-250
-loop2:addi $t0,$t0,1
-	slti $t1,$t0,0
-	bnez $t1,loop2	
+#$a0 = x, $a1 = y, $a2 = endereco_objeto(pac,ghost)
+VERIFICA_POSSIBILIDADE:
+	la $t0, map_vetor
+	la $t2, Xmap
+	# carrega endereco da proxima posicao (x e y antes de andar)
+	mul $t1, $a1, $t2 			# $t1 = $a1(y) * 32 ; 
+	add $t1, $t1, $a0 			# $t1 = $t1($a1(y) * 32) + $a0(x); 
+	add $t0, $t0, $t1 			# $t0 = map_vetor + y * 320 + x
+	lw $t4, 16($a2) 			# carrega $t4 cor do objeto(pac ou fantasma)
+	beq $t4,0x3F,pac_possibilidade		# $t4 = 0x3F (pac_amarelo )vai para pac_possibilidade
+	#	
+	beq $t4,0x07,pac_possibilidade		# $t4 = 0x07 (pac_vermelho) vai para pac_possibilidade
+	#
+	beq $t4,0x2A,fantasma_possibilidade	# $t4 = 0x2A (fantasma_verde) vai para fantasma_possibilidade
+	j return_move				# se chegar aqui, não é um pac ou um fantasma
+
+pac_possibilidade:
+	lbu $t2,0($t0)				# carrega $t2 (tile) no byte que $t0 corresponde.
+	beqz $t2,possivel_pac			# $t4 igual a 0x00(preto)
+	#
+	beq $t2,0xFF,possivel_pac_comida	# $t2 = 0xFF (comida) vai para possivel comida
+	#
+	beq $t2,0xFA,possivel_pac		# $t2= 0xFA (comidona) vai para possivel
+	#
+	la $t1,pac_amarelo			# carrega em $t1 endereço do pac_amarelo
+	beq $t2,0x3F,pac_comer_possibilidade	# $t2 = 0x3F(pac_amarelo) vai pac_amarelo possibilidade
+	#
+	la $t1,pac_vermelho			# carrega em $t1 endereço do pac_vermelho
+	beq $t2,0x07,pac_comer_possibilidade	# $t2 = 0x07(pac_vermelho) vai pac_vermelho possibilidade
+	j return_move				# se chegar aqui, pode andar
+
+possivel_pac_comida:
+	lw $t1,8($a2)
+	addi $t1,$t1,5				# adiciona 5 na pontuação do pac
+	sw $t1,8($a2)
+	j possivel_pac
+	
+possivel_pac:
+	sb $t4,0($t0)				# atualiza proxima posicao no map para o pac
+	# carrega endereco da posicao atual (x e y antes de andar)
+	la $t0, map_vetor
+	la $t2, Xmap
+	mul $t1, $s1, $t2 			# $t1 = $a1(y) * 32 ; 
+	add $t1, $t1, $s0 			# $t1 = $t1($a1(y) * 32) + $a0(x); 
+	add $t1, $t0, $t1 			# $t1 = map_vetor + y * 320 + x
+	# fim carrega endereco
+	li $t4,0				# carrega cor preta
+	sb $t4,0($t1)				# atualiza posicao atual do mapa para preta
 	jr $ra	
 	
-# Contador de 0 a 400 para dar um stop no código
-stop:
-	li $t0,-700
-loop_stop:
-	addi $t0,$t0,1
+pac_comer_possibilidade:
+	lw $t3,8($t1)				# carrega pontuação do pac que se quer comer
+	lw $t4,8($a2)				# carrega pontuação pac atual
+	blt $t3,$t4,possivel_pac		# pontuação do pac que se quer comer menor que a do pac atual, pode comer	
+	j return_move				# se chegar aqui, não pode comer(andar)
+
+				
+fantasma_possibilidade:
+	jr $ra
+	
+# Contador de 0 a 50 para dar um stop no código
+stop2:
+	li $a0,50
+	li $v0,32
+	syscall
+	jr $ra
+	
+stop3:
+	li $t0,-250
+loop3:	addi $t0,$t0,1
 	slti $t1,$t0,0
-	bnez $t1,loop_stop
-	jr $ra	
+	bnez $t1,loop3	
+	jr $ra		
+	
+# Contador de 0 a 1500 para dar um stop no código
+stop:
+	li $a0,150
+	li $v0,32
+	syscall
+	jr $ra
