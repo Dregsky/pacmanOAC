@@ -35,6 +35,10 @@
 	fantasma_rosa: .word 12,10,0x00,0x87
 	fantasma_azul: .word 13,10,0x00,0xC0
 	ERRO_PONTO: .asciiz "Ponto fora do limite\n"
+	
+			  # SI,SI,F#,D#,SI,F#,D#,DO,DO,G ,MI,DO,G ,MI,SI,SI,F#,D#,SI,F#,D#,RE,D#,MI,FA,G ,G#,LA,A#,SI
+	NOTAS_MUSICA: .word 71,71,66,63,71,66,63,72,72,67,64,72,67,64,71,71,66,63,71,66,63,62,63,64,65,67,68,69,71,71
+	DURACAO_NOTA: .word 100,100,100,100,100,100,100,150,150,150,150,150,150,150,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50 
 	SCORE: .asciiz "SCORE:"
 .text
 
@@ -261,6 +265,7 @@ START:
 	jal init_ghost_green
 	jal init_ghost_pink
 	jal init_ghost_blue
+	#jal MUSICA_INICIAL
 loop_ready_tecla:
 	#mtc0 $0, $9				# Reinicia o campo em ms
 	#jal stop
@@ -723,11 +728,11 @@ VERIFICA_POSSIBILIDADE:
 
 pac_possibilidade:
 	lbu $t2,0($t0)				# carrega $t2 (tile) no byte que $t0 corresponde.
-	beqz $t2,possivel_pac			# $t4 igual a 0x00(preto)
+	beqz $t2,possivel_pac			# $t2 igual a 0x00(preto)
 	#
 	beq $t2,0xFF,possivel_pac_comida	# $t2 = 0xFF (comida) vai para possivel comida
 	#
-	beq $t2,0xFA,possivel_pac		# $t2= 0xFA (comidona) vai para possivel
+	beq $t2,0xFA,possivel_pac_comidona	# $t2= 0xFA (comidona) vai para possivel
 	#
 	la $t1,pac_amarelo			# carrega em $t1 endereço do pac_amarelo
 	beq $t2,0x3F,pac_comer_possibilidade	# $t2 = 0x3F(pac_amarelo) vai pac_amarelo possibilidade
@@ -740,7 +745,19 @@ possivel_pac_comida:
 	addi $sp,$sp,-4
 	sw $ra,0($sp)
 	lw $a0,8($a3)
-	addi $a0,$a0,5				# adiciona 5 na pontuação do pac
+	addi $a0,$a0,10				# adiciona 10 na pontuação do pac
+	sw $a0,8($a3)				# $a0 = pontuação
+	lw $a2,24($a3)				# $a2 = posicao score
+	jal PRINT_SCORE
+	lw $ra,0($sp)
+	addi $sp,$sp,4
+	j possivel_pac
+	
+possivel_pac_comidona:
+	addi $sp,$sp,-4
+	sw $ra,0($sp)
+	lw $a0,8($a3)
+	addi $a0,$a0,50				# adiciona 50 na pontuação do pac
 	sw $a0,8($a3)				# $a0 = pontuação
 	lw $a2,24($a3)				# $a2 = posicao score
 	jal PRINT_SCORE
@@ -763,10 +780,34 @@ possivel_pac:
 	
 pac_comer_possibilidade:
 	lw $t3,8($t1)				# carrega pontuação do pac que se quer comer
-	lw $t4,8($a2)				# carrega pontuação pac atual
+	lw $t4,8($a3)				# carrega pontuação pac atual
 	blt $t3,$t4,possivel_pac		# pontuação do pac que se quer comer menor que a do pac atual, pode comer	
 	j return_move				# se chegar aqui, não pode comer(andar)
 
 				
 fantasma_possibilidade:
+	jr $ra
+	
+MUSICA_INICIAL:
+	li $s1,30
+	la $s0,NOTAS_MUSICA
+	la $s2,DURACAO_NOTA
+	li $t0,0
+	li $a2,0	# instrumento
+	li $a3,75	# volume
+
+loop_musica:	
+	beq $t0,$s1, fim_musica
+	lw $a0,0($s0)		# nota
+	lw $a1,0($s2)		# duracao
+	li $v0,31		# 33 da pausa a mais
+	syscall
+	move $a0,$a1		#pausa = duracao
+	li $v0,32
+	syscall
+	addi $s0,$s0,4		# proxima nota
+	addi $s2,$s2,4		# proxima duração
+	addi $t0,$t0,1
+	j loop_musica
+fim_musica:
 	jr $ra
