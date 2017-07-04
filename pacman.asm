@@ -5,6 +5,7 @@
 .eqv Ymap 24
 
 .data
+	map_vetor_backup: .byte 0x00,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFA,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFA,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0xFF,0x99,0xFF,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0xFF,0x99,0xFF,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0xFF,0xFF,0xFF,0x99,0xFF,0xFF,0xFF,0x99,0x99,0x99,0x99,0x99,0xFF,0xFF,0xFF,0x99,0xFF,0xFF,0xFF,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0x99,0x99,0x99,0xFF,0x99,0x99,0x99,0x00,0x99,0x99,0x99,0x99,0x99,0x00,0x99,0x99,0x99,0xFF,0x99,0x99,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0x00,0x99,0x99,0xAD,0xAD,0xAD,0x99,0x99,0x00,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0x00,0x99,0x99,0x00,0x00,0x00,0x99,0x99,0x00,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x00,0x00,0x00,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x00,0x00,0x00,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0x00,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x00,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFA,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFA,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0xFF,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0xFF,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0x99,0xFF,0x99,0xFF,0x99,0xFF,0x99,0x99,0x99,0x99,0xFF,0x99,0x99,0x99,0x99,0xFF,0x99,0xFF,0x99,0xFF,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0x99,0xFF,0x99,0xFF,0x99,0xFF,0x99,0x99,0x99,0x99,0xFF,0x99,0x99,0x99,0x99,0xFF,0x99,0xFF,0x99,0xFF,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0xFF,0xFF,0xFF,0x99,0xFF,0xFF,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0xFF,0xFF,0x99,0xFF,0xFF,0xFF,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0x99,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0x99,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
 	map_vetor: .byte 0x00,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFA,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFA,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0xFF,0x99,0xFF,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0xFF,0x99,0xFF,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0xFF,0xFF,0xFF,0x99,0xFF,0xFF,0xFF,0x99,0x99,0x99,0x99,0x99,0xFF,0xFF,0xFF,0x99,0xFF,0xFF,0xFF,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0x99,0x99,0x99,0xFF,0x99,0x99,0x99,0x00,0x99,0x99,0x99,0x99,0x99,0x00,0x99,0x99,0x99,0xFF,0x99,0x99,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0x00,0x99,0x99,0xAD,0xAD,0xAD,0x99,0x99,0x00,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0x00,0x99,0x99,0x00,0x00,0x00,0x99,0x99,0x00,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x00,0x00,0x00,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x00,0x00,0x00,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0x00,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x00,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFA,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFA,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0xFF,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0xFF,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0x99,0xFF,0x99,0xFF,0x99,0xFF,0x99,0x99,0x99,0x99,0xFF,0x99,0x99,0x99,0x99,0xFF,0x99,0xFF,0x99,0xFF,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0x99,0xFF,0x99,0xFF,0x99,0xFF,0x99,0x99,0x99,0x99,0xFF,0x99,0x99,0x99,0x99,0xFF,0x99,0xFF,0x99,0xFF,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0xFF,0xFF,0xFF,0x99,0xFF,0xFF,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0xFF,0xFF,0x99,0xFF,0xFF,0xFF,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0x99,0x99,0x99,0x99,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0xFF,0x99,0x99,0x99,0x99,0x99,0x99,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x99,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
 	#
 	tile_comida: .byte 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0xFF,0xFF,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0xFF,0xFF,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
@@ -36,14 +37,25 @@
 	ghost_branco: .byte 0x00,0x00,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x00,0x00,0x00,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x00,0xFF,0xFF,0xFF,0x07,0xFF,0xFF,0x07,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x07,0x07,0xFF,0xFF,0x07,0x07,0xFF,0xFF,0xFF,0x07,0xFF,0xFF,0x07,0x07,0xFF,0xFF,0x07,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x00,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x00,0xFF,0xFF,0x00,0x00,0xFF,0x00,0x00,0xFF,0x00,0x00,0xFF
 	#		   xMap,yMap,xPixel,yPixel,tipo_personagem(1-pac,2-fantasma), cor, tile_atual, 
 	#                  tile_anterior, vidas_qtd, posicao_score, score, ultima_tecla, ultima_direcao(0-up,1-right,2,down,3-left),
-	#                  tipo_desenho, indicador(abrindo fechando)	
-	pac_amarelo: .word 2,22,20,220,1,0x3F,0xFF,0x99,3,30,0,0x64,1,0,1
-	pac_verde: .word 22,22,220,220,1,0x18,0xFF,0x99,3,80,0,0x66,3,0,1
-	#		      xMap,yMap,xPixel,yPixel,tipo_personagem(1-pac,2-fantasma), cor, tile_atual, tile_anterior, ultima_direcao
-	fantasma_vermelho: .word 11,10,110,100,2,0x07,0,0,4
-	fantasma_rosa: .word 12,10,120,100,2,0x87,0,0,4
-	fantasma_azul: .word 13,10,130,100,2,0xF8,0,0,4
-	fantasma_laranja: .word 12,8,120,80,2,0x27,0,0,5
+	#                  tipo_desenho, indicador(abrindo fechando) powerUP(Comeu comidona),
+	#		   indicador(branco ou cor do pac no powerup)	
+	pac_amarelo_backup: .byte 2,22,20,220,1,0x3F,0xFF,0x99,3,30,0,0x64,1,0,1,0,0
+	pac_amarelo: .word 2,22,20,220,1,0x3F,0xFF,0x99,3,30,0,0x64,1,0,1,0,0
+	pac_verde_backup: .byte 22,22,220,220,1,0x18,0xFF,0x99,3,80,0,0x66,3,0,1,0,0
+	pac_verde: .word 22,22,220,220,1,0x18,0xFF,0x99,3,80,0,0x66,3,0,1,0,0
+	#		      	xMap,yMap,xPixel,yPixel,tipo_personagem(1-pac,2-fantasma), cor, tile_atual, tile_anterior, 
+	#			ultima_direcao,indicador_perninhas,powerUp(Troca Branco azul),indicador_casa
+	fantasma_vermelho: .word 11,10,110,100,2,0x07,0x00,0x99,4,0,0,20
+	fantasma_vermelho_backup: .byte 11,10,110,100,2,0x07,0x00,0x99,4,0,0,20
+	fantasma_rosa: .word 12,10,120,100,2,0x87,0x00,0x99,4,0,0
+	fantasma_rosa_backup: .byte 12,10,120,100,2,0x87,0x00,0x99,4,0,0
+	fantasma_azul: .word 13,10,130,100,2,0xF8,0x00,0x99,4,0,0
+	fantasma_azul_backup: .byte 13,10,130,100,2,0xF8,0x00,0x99,4,0,0
+	fantasma_laranja: .word 12,8,120,80,2,0x27,0x00,0x00,5,0,0
+	fantasma_laranja_backup: .byte 12,8,120,80,2,0x27,0x00,0x00,5,0,0
+	##
+	# Quantidade Players	
+	quantidade_players: .byte 1
 	ERRO_PONTO: .asciiz "Ponto fora do limite\n"
 	
 			  # SI,SI,F#,D#,SI,F#,D#,DO,DO,G ,MI,DO,G ,MI,SI,SI,F#,D#,SI,F#,D#,RE,D#,MI,FA,G ,G#,LA,A#,SI
@@ -53,6 +65,7 @@
 .text
 
 MAIN:  
+	jal RESETA_DATA_MEMORY
 	jal MAPA
 	#jal TESTE_RETA
 	#jal loop
@@ -68,12 +81,12 @@ START:
 	sw $ra,0($sp)
 	li $t0, 0xffff
 	jal INIT_PONTUACOES
-	jal init_pac_yellow
-	jal init_pac_green
-	jal init_ghost_red
-	jal init_ghost_pink
-	jal init_ghost_blue
-	jal init_ghost_orange
+	jal INIT_PAC_YELLOW
+	jal INIT_PAC_GREEN
+	jal INIT_GHOST_RED
+	jal INIT_GHOST_PINK
+	jal INIT_GHOST_BLUE
+	jal INIT_GHOST_ORANGE
 	#jal MUSICA_INICIAL
 	loop_ready_tecla:
 		#mtc0 $0, $9				# Reinicia o campo em ms
@@ -126,7 +139,7 @@ START:
     		jal MOVE_PAC_YELLOW
     		lw $s5,0($sp)				
     		jal MOVE_PAC_GREEN
-		#jal move_ghosts
+		jal MOVE_GHOSTS
     		addi $sp,$sp,4
     		#
     		jal RENDERIZA
@@ -181,6 +194,746 @@ MOVE_PAC_GREEN:
 		# 
 		j return_move
 
+#######################
+# branch right
+#######################			    		    
+move_right:
+ 	#move $a0,$s0
+ 	#move $a1,$s1
+ 	lw $s0,8($s4)				# carrega xPixel
+ 	lw $s1,12($s4)				# carrega yMap
+ 	li $t0,10
+ 	div $s0,$t0
+ 	mflo $s0
+ 	mfhi $t1				# resto x
+ 	div $s1,$t0
+ 	mflo $s1
+ 	mfhi $t2				# resto y
+ 	lw $t3,48($s4)				# carrega direção
+ 	beq $t3,1,verifica_right 		# A direção do personagem é igual a direita(1)
+ 	beq $t3,3,verifica_right 		# A direção do personagem é igual a esquerda(3)
+ 	bnez $t1,continua_direcao_anterior	# Se a direção é diferente e o restox != 0 (não pode mudar de direção)
+ 	bnez $t2,continua_direcao_anterior	# Se a direção é diferente e o restoy != 0 (não pode mudar de direção)
+ 	##			
+	verifica_right:
+ 		addi $a0,$s0,1
+ 		move $a1,$s1
+ 		move $a3,$s4				# Guarda em $a3 o endereço do objeto(pac ou fantasma)
+ 		jal VERIFICA_POSSIBILIDADE
+ 		beqz $v0,verifica_direcao_right		# se $v0 = 0 não é possível
+ 		li $t0,1				# 1 a direção é right
+		sw $t0,48($s4)				# atualiza direção
+		##
+ 		sw $s0,0($s4)				# xMap
+ 		sw $s1,4($s4)				# yMap
+ 		#
+ 		move $a0,$s0				
+ 		move $a1,$s1
+ 		jal TILE_MAP
+ 		sw $v0,24($s4)
+ 		##
+ 		add $a0,$s0,-1
+ 		move $a1,$s1
+ 		jal TILE_MAP
+ 		sw $v0, 28($s4)
+		##
+	atualiza_right:
+		lw $a0,8($s4)				# carrega posicao x pixel
+ 		addi $a0,$a0,1				
+ 		sw $a0,8($s4)				
+ 		lw $a1,12($s4)				# carrega posicao y pixel
+ 		lw $a2,20($s4)				# carrega cor_objeto
+ 		jal VERIFICA_POSSIBILIDADE_OBJETO
+		j return_move
+	verifica_direcao_right:	
+		lw $t2,48($s4)				# A direção do personagem
+ 		beq $t2,1,return_move			# direcao = 1(right) ( Se a direção é 1 já tentamos ir por ela)
+ 		j continua_direcao_anterior
+
+#######################
+# branch left
+#######################			
+move_left:
+ 	lw $s0,8($s4)			# carrega xPixel
+ 	lw $s1,12($s4)			# carrega yMap
+ 	li $t0,10
+ 	div $s0,$t0
+ 	mflo $s0
+ 	mfhi $t1				# restox
+ 	div $s1,$t0
+ 	mflo $s1
+ 	mfhi $t2				# restoy
+ 	lw $t3,48($s4)				# Carrega direção
+ 	addi $s0,$s0,1 # arredonda pra cima	
+ 	beq $t3,3,verifica_left1 		# A direção do personagem é igual a esquerda(3)
+ 	beq $t3,1,verifica_left1 		# A direção do personagem é igual a direita(1)
+ 	bnez $t1,continua_direcao_anterior	# Se a direção é diferente e o restox != 0 (não pode mudar de direção)
+ 	bnez $t2,continua_direcao_anterior	# Se a direção é diferente e o restoy != 0 (não pode mudar de direção)
+ 	# se chegar aqui a direção ta mudando e o xMap e yMap é uma posição válida
+ 	addi $s0,$s0,-1 			# restos == 0 não precisa arredondar
+ 	j verifica_left
+ 	#
+	verifica_left1: 	
+ 		bnez $t1,verifica_left			# Se é difereção igual e o restox != 0 (mantem arredondamento)
+ 		addi $s0,$s0,-1 			# restos == 0 não precisa arredondar
+ 	#
+	verifica_left:
+ 		addi $a0,$s0,-1
+ 		move $a1,$s1
+ 		move $a3,$s4				# Guarda em $a3 o endereço do objeto(pac ou fantasma)
+ 		jal VERIFICA_POSSIBILIDADE
+ 		beqz $v0,verifica_direcao_left		# se $v0 = 0 não é possível
+ 		li $t0,3				# 3 a direção é left
+		sw $t0,48($s4)				# atualiza direção
+		# TILE ATUAL
+ 		sw $s0,0($s4)				# xMap
+ 		sw $s1,4($s4)				# yMap
+ 		# TILE_ANTERIOR
+ 		move $a0,$s0				
+ 		move $a1,$s1
+ 		jal TILE_MAP
+ 		sw $v0,24($s4)
+ 		##
+ 		add $a0,$s0,1
+ 		move $a1,$s1
+ 		jal TILE_MAP
+ 		sw $v0, 28($s4)
+		##
+	atualiza_left:
+		lw $a0,8($s4)				# carrega posicao x pixel
+ 		addi $a0,$a0,-1				
+ 		sw $a0,8($s4)				
+ 		lw $a1,12($s4)				# carrega posicao y pixel
+ 		lw $a2,20($s4)				# carrega cor_objeto
+ 		jal VERIFICA_POSSIBILIDADE_OBJETO
+		j return_move
+	verifica_direcao_left:	
+		lw $t2,48($s4)				# A direção do personagem
+ 		beq $t2,3,return_move			# direcao = 3(left) ( Se a direção é 3 já tentamos ir por ela)
+ 		j continua_direcao_anterior
+
+#######################
+# branch top
+#######################	
+move_top:
+ 	#move $a0,$s0
+ 	#move $a1,$s1
+ 	lw $s0,8($s4)	# xMap
+ 	lw $s1,12($s4)	# yPixel
+ 	li $t0,10
+ 	div $s1,$t0
+ 	mflo $s1
+ 	mfhi $t1				# restoy
+ 	div $s0,$t0
+ 	mflo $s0
+ 	mfhi $t2				# restox
+	lw $t3,48($s4)				# Carrega a direção	
+	addi $s1,$s1,1 # arredonda pra cima
+ 	beq $t3,0,verifica_top1 		# A direção do personagem é igual a top(0)
+ 	beq $t3,2,verifica_top1 		# A direção do personagem é igual a down(2)
+ 	bnez $t1,continua_direcao_anterior	# Se a direção é diferente e o restox != 0 (não pode mudar de direção)
+ 	bnez $t2,continua_direcao_anterior	# Se a direção é diferente e o restoy != 0 (não pode mudar de direção)
+ 	# se chegar aqui a direção ta mudando e o xMap e yMap é uma posição válida
+ 	addi $s1,$s1,-1 			# restos == 0 não precisa arredondar
+	j verifica_top
+	#
+	verifica_top1:
+		bnez $t1,verifica_top			# Se a direção é igual e o restoy != 0 (mantem arredondamento)
+		addi $s1,$s1,-1				# restos == 0 não precisa arredondar
+	#
+	verifica_top:
+ 		addi $a1,$s1,-1
+ 		move $a0,$s0
+ 		move $a3,$s4				# Guarda em $a3 o endereço do objeto(pac ou fantasma)
+ 		jal VERIFICA_POSSIBILIDADE
+ 		beqz $v0,verifica_direcao_top		# se $v0 = 0 não é possível
+ 		li $t0,0				# 0 a direção é top
+		sw $t0,48($s4)				# atualiza direção
+		#
+		sw $s0,0($s4)				# Guarda no xMap
+ 		sw $s1,4($s4)				# Guarda no yMap
+ 		# TILE ATUAL
+ 		move $a0,$s0				
+ 		move $a1,$s1
+ 		jal TILE_MAP
+ 		sw $v0,24($s4)
+ 		## TILE ANTERIOR
+ 		move $a0,$s0
+ 		addi $a1,$s1,1
+ 		jal TILE_MAP
+ 		sw $v0, 28($s4)
+		##
+	atualiza_top:
+		lw $a1,12($s4)				# carrega posicao y pixel
+ 		addi $a1,$a1,-1				
+ 		sw $a1,12($s4)				
+ 		lw $a0,8($s4)				# carrega posicao x pixel
+ 		lw $a2,20($s4)				# carrega cor_objeto
+ 		jal VERIFICA_POSSIBILIDADE_OBJETO
+		j return_move
+	verifica_direcao_top:	
+		lw $t2,48($s4)				# A direção do personagem
+ 		beq $t2,0,return_move			# direcao = 0(top) ( Se a direção é 0 já tentamos ir por ela)
+ 		j continua_direcao_anterior
+
+#######################
+# branch down
+#######################			
+move_down:
+ 	lw $s0,8($s4)			# xPixel
+ 	lw $s1,12($s4)			# yPixel
+ 	li $t0,10
+ 	div $s1,$t0
+ 	mflo $s1
+ 	mfhi $t1				# restoy
+ 	div $s0,$t0
+ 	mflo $s0				# resto x
+ 	mfhi $t2				# restou
+	lw $t3,48($s4)				# Carrega direção
+ 	beq $t3,2,verifica_down 		# A direção do personagem é igual a down(2)
+ 	beq $t3,0,verifica_down 		# A direção do personagem é igual a up(0)
+ 	bnez $t1,continua_direcao_anterior	# Se a direção é diferente e o restoy != 0 (não pode mudar de direção)
+ 	bnez $t2,continua_direcao_anterior	# Se a direção é diferente e o restox != 0 (não pode mudar de direção)
+ 	##			
+	verifica_down:
+ 		addi $a1,$s1,1
+ 		move $a0,$s0
+ 		move $a3,$s4				# Guarda em $a3 o endereço do objeto(pac ou fantasma)
+ 		jal VERIFICA_POSSIBILIDADE
+ 		beqz $v0,verifica_direcao_down		# se $v0 = 0 não é possível
+ 		li $t0,2				# 2 a direção é down
+		sw $t0,48($s4)				# atualiza direção
+		## Atualiza posição
+ 		sw $s0,0($s4)				# Guarda no xMap
+ 		sw $s1,4($s4)				# Guarda no yMap
+ 		# TILE ATUAL
+ 		move $a0,$s0				
+ 		move $a1,$s1
+ 		jal TILE_MAP
+ 		sw $v0,24($s4)
+ 		## TILE ANTERIOR
+ 		move $a0,$s0
+ 		addi $a1,$s1,-1
+ 		jal TILE_MAP
+ 		sw $v0,28($s4)
+		##
+	atualiza_down:
+		lw $a1,12($s4)				# carrega posicao y pixel
+ 		addi $a1,$a1,1				
+ 		sw $a1,12($s4)				
+ 		lw $a0,8($s4)				# carrega posicao x pixel
+ 		lw $a2,20($s4)				# carrega cor_objeto
+ 		jal VERIFICA_POSSIBILIDADE_OBJETO
+		j return_move
+	verifica_direcao_down:	
+		lw $t2,48($s4)				# A direção do personagem
+ 		beq $t2,2,return_move			# direcao = 2(down) ( Se a direção é 2 já tentamos ir por ela)
+ 		j continua_direcao_anterior
+
+# Continua na direção anterior do pac
+continua_direcao_anterior:
+	lw $t0,48($s4)
+	beq $t0,0,move_top 	# direção igual a 0(top)vai para move_top
+	beq $t0,1,move_right 	# direção igual a 1(right)vai para move_right
+	beq $t0,2,move_down 	# direção igual a 2(down)vai para move_down
+	beq $t0,3,move_left 	# direção igual a 3(left)vai para move_left
+	j return_move
+
+return_move:
+	lw $ra,0($sp)
+	addi $sp,$sp,4
+	jr $ra
+		
+#########################
+# MOVE GHOSTS
+#########################
+MOVE_GHOSTS:
+	addi $sp,$sp,-16
+	sw $ra,0($sp)
+	sw $s4,4($sp)
+	sw $s0,8($sp)
+	sw $s1,12($sp)
+	#jal move_ghost_orange
+	jal MOVE_GHOST_RED
+	#jal move_ghost_pink
+	#jal move_ghost_blue
+	lw $ra,0($sp)
+	lw $s4,4($sp)
+	lw $s0,8($sp)
+	lw $s1,12($sp)
+	addi $sp,$sp,16
+	jr $ra
+	
+move_ghost_orange:
+	j return_move
+	
+MOVE_GHOST_RED:
+	addi $sp,$sp,-4
+	sw $ra,0($sp)
+	la $s4,fantasma_vermelho
+	la $t1,pac_amarelo
+	lw $t0,44($s4)
+	bnez $t0,ghost_red_sai_casa # Faz o ghost sair da casinha
+	lw $t2,0($s4) # x fantasma
+	lw $t3,4($s4) # y fantasm
+	lw $t4,0($t1) # x pac
+	lw $t5,4($t1) # y pac
+	sub $s0,$t2,$t4 # $s0 = xG - xP
+	sub $s1,$t3,$t5 # $s1 = yG - yP
+	blt $s0,0,x_negativo_ghost
+	#######
+	# x positivo
+	#######
+	j x_positivo_ghost
+	ghost_red_sai_casa:
+		addi $t0,$t0,-1
+		sw $t0,44($s4)
+		jal MOVE_GHOST_TOP
+		j return_move
+	
+	
+move_ghost_pink:
+	j return_move
+	
+move_ghost_blue:
+	j return_move
+	
+x_positivo_ghost:
+	jal MOVE_GHOST_LEFT
+	beq $v0,1,return_move # Se conseguiu ir para esquerda
+	ble $s1,0,x_positivo_y_negativo_ghost
+	##############
+	# x negativo y positivo
+	##############
+	x_positivo_y_positivo_ghost:
+		jal MOVE_GHOST_TOP
+		beq $v0,1,return_move # Se conseguiu ir para cima
+		jal MOVE_GHOST_RIGHT
+		beq $v0,1,return_move # Se conseguiu ir para direita
+		jal MOVE_GHOST_DOWN
+		beq $v0,1,return_move # Se conseguiu ir para baixo
+		j return_move
+	x_positivo_y_negativo_ghost:
+		jal MOVE_GHOST_DOWN
+		beq $v0,1,return_move # Se conseguiu ir para baixo
+		jal MOVE_GHOST_RIGHT
+		beq $v0,1,return_move # Se conseguiu ir para direita
+		jal MOVE_GHOST_TOP
+		beq $v0,1,return_move # Se conseguiu ir para cima
+		j return_move
+x_negativo_ghost:
+	jal MOVE_GHOST_RIGHT
+	beq $v0,1,return_move # Se conseguiu ir para direita
+	ble $s1,0,x_negativo_y_negativo_ghost
+	##############
+	# x negativo y positivo
+	##############
+	x_negativo_y_positivo_ghost:
+		jal MOVE_GHOST_TOP
+		beq $v0,1,return_move # Se conseguiu ir para cima
+		jal MOVE_GHOST_LEFT
+		beq $v0,1,return_move # Se conseguiu ir para esquerda
+		jal MOVE_GHOST_DOWN
+		beq $v0,1,return_move # Se conseguiu ir para baixo
+		j return_move
+	x_negativo_y_negativo_ghost:
+		jal MOVE_GHOST_DOWN
+		beq $v0,1,return_move # Se conseguiu ir para baixo
+		jal MOVE_GHOST_LEFT
+		beq $v0,1,return_move # Se conseguiu ir para esquerda
+		jal MOVE_GHOST_TOP
+		beq $v0,1,return_move # Se conseguiu ir para cima
+		j return_move
+		
+#######################
+# MOVE GHOST RIGHT
+#######################			    		    
+MOVE_GHOST_RIGHT:
+ 	addi $sp,$sp,-16
+ 	sw $ra,0($sp)
+ 	sw $s0,4($sp)
+ 	sw $s1,8($sp)
+ 	sw $s4,12($sp)
+ 	########
+ 	lw $s0,8($s4)				# carrega xPixel
+ 	lw $s1,12($s4)				# carrega yMap
+ 	li $t0,10
+ 	div $s0,$t0
+ 	mflo $s0
+ 	mfhi $t1				# resto x
+ 	div $s1,$t0
+ 	mflo $s1
+ 	mfhi $t2				# resto y
+ 	lw $t3,32($s4)				# carrega direção ghost
+ 	li $v0,0				# supoem que não é possivel
+ 	beq $t3,5,verifica_ghost_right 		# A direção do personagem é igual a direita(5)
+ 	beq $t3,7,verifica_ghost_right 		# A direção do personagem é igual a esquerda(7)
+ 	bnez $t1,exit_ghost_move		# Se a direção é diferente e o restox != 0 (não pode mudar de direção)
+ 	bnez $t2,exit_ghost_move		# Se a direção é diferente e o restoy != 0 (não pode mudar de direção)
+ 	##			
+	verifica_ghost_right:
+ 		addi $a0,$s0,1
+ 		move $a1,$s1
+ 		move $a3,$s4				# Guarda em $a3 o endereço do objeto(pac ou fantasma)
+ 		jal VERIFICA_POSSIBILIDADE
+ 		beqz $v0,exit_ghost_move		# se $v0 = 0 não é possível
+ 		li $t0,5				# 5 a direção é right
+		sw $t0,32($s4)				# atualiza direção
+		##
+ 		sw $s0,0($s4)				# xMap
+ 		sw $s1,4($s4)				# yMap
+ 		#
+ 		move $a0,$s0				
+ 		move $a1,$s1
+ 		jal TILE_MAP
+ 		sw $v0,24($s4)
+ 		##
+ 		add $a0,$s0,-1
+ 		move $a1,$s1
+ 		jal TILE_MAP
+ 		sw $v0, 28($s4)
+		##
+		lw $a0,8($s4)				# carrega posicao x pixel
+ 		addi $a0,$a0,1				
+ 		sw $a0,8($s4)				
+ 		lw $a1,12($s4)				# carrega posicao y pixel
+ 		lw $a2,20($s4)				# carrega cor_objeto
+ 		jal VERIFICA_POSSIBILIDADE_OBJETO
+		li $v0,1				# Foi possivel
+		j exit_ghost_move
+		
+#######################
+# MOVE GHOST left
+#######################			 		
+MOVE_GHOST_LEFT:
+ 	addi $sp,$sp,-16
+ 	sw $ra,0($sp)
+ 	sw $s0,4($sp)
+ 	sw $s1,8($sp)
+ 	sw $s4,12($sp)
+ 	########
+ 	lw $s0,8($s4)			# carrega xPixel
+ 	lw $s1,12($s4)			# carrega yMap
+ 	li $t0,10
+ 	div $s0,$t0
+ 	mflo $s0
+ 	mfhi $t1				# restox
+ 	div $s1,$t0
+ 	mflo $s1
+ 	mfhi $t2				# restoy
+ 	lw $t3,32($s4)				# Carrega direção
+ 	addi $s0,$s0,1 # arredonda pra cima	
+ 	li $v0,0				# supoem que não é possivel
+ 	beq $t3,7,verifica_ghost_left1 		# A direção do personagem é igual a esquerda(7)
+ 	beq $t3,5,verifica_ghost_left1 		# A direção do personagem é igual a direita(5)
+ 	bnez $t1,exit_ghost_move		# Se a direção é diferente e o restox != 0 (não pode mudar de direção)
+ 	bnez $t2,exit_ghost_move		# Se a direção é diferente e o restoy != 0 (não pode mudar de direção)
+ 	# se chegar aqui a direção ta mudando e o xMap e yMap é uma posição válida
+ 	addi $s0,$s0,-1 			# restos == 0 não precisa arredondar
+ 	j verifica_ghost_left
+ 	#
+	verifica_ghost_left1: 	
+ 		bnez $t1,verifica_ghost_left		# Se é difereção igual e o restox != 0 (mantem arredondamento)
+ 		addi $s0,$s0,-1 			# restos == 0 não precisa arredondar
+ 	#
+	verifica_ghost_left:
+ 		addi $a0,$s0,-1
+ 		move $a1,$s1
+ 		move $a3,$s4				# Guarda em $a3 o endereço do objeto(pac ou fantasma)
+ 		jal VERIFICA_POSSIBILIDADE
+ 		beqz $v0,exit_ghost_move		# se $v0 = 0 não é possível
+ 		li $t0,7				# 7 a direção é left
+		sw $t0,32($s4)				# atualiza direção
+		# TILE ATUAL
+ 		sw $s0,0($s4)				# xMap
+ 		sw $s1,4($s4)				# yMap
+ 		# TILE_ANTERIOR
+ 		move $a0,$s0				
+ 		move $a1,$s1
+ 		jal TILE_MAP
+ 		sw $v0,24($s4)
+ 		##
+ 		add $a0,$s0,1
+ 		move $a1,$s1
+ 		jal TILE_MAP
+ 		sw $v0, 28($s4)
+		#
+		lw $a0,8($s4)				# carrega posicao x pixel
+ 		addi $a0,$a0,-1				
+ 		sw $a0,8($s4)				
+ 		lw $a1,12($s4)				# carrega posicao y pixel
+ 		lw $a2,20($s4)				# carrega cor_objeto
+ 		jal VERIFICA_POSSIBILIDADE_OBJETO
+		li $v0,1				# Foi possivel 
+		j exit_ghost_move
+
+#######################
+# MOVE GHOST TOP
+#######################			 		
+MOVE_GHOST_TOP:
+ 	addi $sp,$sp,-16
+ 	sw $ra,0($sp)
+ 	sw $s0,4($sp)
+ 	sw $s1,8($sp)
+ 	sw $s4,12($sp)
+ 	########
+ 	lw $s0,8($s4)	# xMap
+ 	lw $s1,12($s4)	# yPixel
+ 	li $t0,10
+ 	div $s1,$t0
+ 	mflo $s1
+ 	mfhi $t1				# restoy
+ 	div $s0,$t0
+ 	mflo $s0
+ 	mfhi $t2				# restox
+	lw $t3,32($s4)				# Carrega a direção	
+	addi $s1,$s1,1 # arredonda pra cima
+	li $v0,0				# Supor que não é possível
+ 	beq $t3,4,verifica_ghost_top1 		# A direção do personagem é igual a top(4)
+ 	beq $t3,6,verifica_ghost_top1 		# A direção do personagem é igual a down(6)
+ 	bnez $t1,exit_ghost_move		# Se a direção é diferente e o restox != 0 (não pode mudar de direção)
+ 	bnez $t2,exit_ghost_move		# Se a direção é diferente e o restoy != 0 (não pode mudar de direção)
+ 	# se chegar aqui a direção ta mudando e o xMap e yMap é uma posição válida
+ 	addi $s1,$s1,-1 			# restos == 0 não precisa arredondar
+	j verifica_ghost_top
+	#
+	verifica_ghost_top1:
+		bnez $t1,verifica_ghost_top		# Se a direção é igual e o restoy != 0 (mantem arredondamento)
+		addi $s1,$s1,-1				# restos == 0 não precisa arredondar
+	#
+	verifica_ghost_top:
+ 		addi $a1,$s1,-1
+ 		move $a0,$s0
+ 		move $a3,$s4				# Guarda em $a3 o endereço do objeto(pac ou fantasma)
+ 		jal VERIFICA_POSSIBILIDADE
+ 		beqz $v0,exit_ghost_move		# se $v0 = 0 não é possível
+ 		li $t0,4				# 4 a direção é top
+		sw $t0,32($s4)				# atualiza direção
+		#
+		sw $s0,0($s4)				# Guarda no xMap
+ 		sw $s1,4($s4)				# Guarda no yMap
+ 		# TILE ATUAL
+ 		move $a0,$s0				
+ 		move $a1,$s1
+ 		jal TILE_MAP
+ 		sw $v0,24($s4)
+ 		## TILE ANTERIOR
+ 		move $a0,$s0
+ 		addi $a1,$s1,1
+ 		jal TILE_MAP
+ 		sw $v0, 28($s4)
+		#
+		lw $a1,12($s4)				# carrega posicao y pixel
+ 		addi $a1,$a1,-1				
+ 		sw $a1,12($s4)				
+ 		lw $a0,8($s4)				# carrega posicao x pixel
+ 		lw $a2,20($s4)				# carrega cor_objeto
+ 		jal VERIFICA_POSSIBILIDADE_OBJETO
+		li $v0,1 				# Indica que foi possivel
+		j exit_ghost_move
+
+#######################
+# MOVE GHOST DOWN
+#######################			 		
+MOVE_GHOST_DOWN:
+ 	addi $sp,$sp,-16
+ 	sw $ra,0($sp)
+ 	sw $s0,4($sp)
+ 	sw $s1,8($sp)
+ 	sw $s4,12($sp)
+ 	########
+ 	lw $s0,8($s4)			# xPixel
+ 	lw $s1,12($s4)			# yPixel
+ 	li $t0,10
+ 	div $s1,$t0
+ 	mflo $s1
+ 	mfhi $t1				# restoy
+ 	div $s0,$t0
+ 	mflo $s0				# resto x
+ 	mfhi $t2				# restou
+	lw $t3,32($s4)				# Carrega direção
+	li $v0,0				# supor que não é possivel
+ 	beq $t3,6,verifica_ghost_down 		# A direção do personagem é igual a down(6)
+ 	beq $t3,4,verifica_ghost_down 		# A direção do personagem é igual a up(4)
+ 	bnez $t1,exit_ghost_move		# Se a direção é diferente e o restoy != 0 (não pode mudar de direção)
+ 	bnez $t2,exit_ghost_move		# Se a direção é diferente e o restox != 0 (não pode mudar de direção)
+ 	##			
+	verifica_ghost_down:
+ 		addi $a1,$s1,1
+ 		move $a0,$s0
+ 		move $a3,$s4				# Guarda em $a3 o endereço do objeto(pac ou fantasma)
+ 		jal VERIFICA_POSSIBILIDADE
+ 		beqz $v0,exit_ghost_move		# se $v0 = 0 não é possível
+ 		li $t0,6				# 6 a direção é down
+		sw $t0,32($s4)				# atualiza direção
+		## Atualiza posição
+ 		sw $s0,0($s4)				# Guarda no xMap
+ 		sw $s1,4($s4)				# Guarda no yMap
+ 		# TILE ATUAL
+ 		move $a0,$s0				
+ 		move $a1,$s1
+ 		jal TILE_MAP
+ 		sw $v0,24($s4)
+ 		## TILE ANTERIOR
+ 		move $a0,$s0
+ 		addi $a1,$s1,-1
+ 		jal TILE_MAP
+ 		sw $v0,28($s4)
+		##
+		lw $a1,12($s4)				# carrega posicao y pixel
+ 		addi $a1,$a1,1				
+ 		sw $a1,12($s4)				
+ 		lw $a0,8($s4)				# carrega posicao x pixel
+ 		lw $a2,20($s4)				# carrega cor_objeto
+ 		jal VERIFICA_POSSIBILIDADE_OBJETO
+		li $v0,1				# indica possivel
+		j exit_ghost_move
+		
+exit_ghost_move:	
+ 	lw $ra,0($sp)
+ 	lw $s0,4($sp)
+ 	lw $s1,8($sp)
+ 	lw $s4,12($sp)
+ 	addi $sp,$sp,16
+ 	jr $ra
+#######################
+# VERIFICA POSSIBILIDADE
+#######################	
+#$a0 = x, $a1 = y, $a3 = endereco_objeto(pac,ghost)
+VERIFICA_POSSIBILIDADE:
+	addi $sp,$sp,-12
+	sw $ra,8($sp)
+	sw $s2,4($sp)
+	sw $s3,0($sp)
+	move $s3,$a3		# $s3 = endereco_objeto
+	la $t0, map_vetor
+	la $t2, Xmap
+	# carrega endereco da proxima posicao (x e y antes de andar)
+	mult $a1, $t2 				# $t1 = $a1(y) * 32 ; 
+	mflo $t1
+	add $t1, $t1, $a0 			# $t1 = $t1($a1(y) * 32) + $a0(x); 
+	add $s2, $t0, $t1 			# $t0 = map_vetor + y * 32 + x
+	lw $t4, 20($s3) 			# carrega $t4 cor do objeto(pac ou fantasma)
+	beq $t4,0x3F,pac_possibilidade		# $t4 = 0x3F (pac_amarelo )vai para pac_possibilidade
+	#	
+	beq $t4,0x18,pac_possibilidade		# $t4 = 0x18 (pac_verde) vai para pac_possibilidade
+	#
+	beq $t4,0x07,fantasma_possibilidade	# $t4 = 0x07 (fantasma_vermelho) vai para fantasma_possibilidade
+	li $v0,0				# Indica que que não é um pac ou um fantasma
+	j return_verifica_possibilidade		# se chegar aqui, não é um pac ou um fantasma
+
+	pac_possibilidade:
+		lbu $t2,0($s2)				# carrega $t2 (tile) no byte que $t0 corresponde.
+		beqz $t2,possivel_pac			# $t2 igual a 0x00(preto)
+		#
+		beq $t2,0xFF,possivel_pac_comida	# $t2 = 0xFF (comida) vai para possivel comida
+		#
+		beq $t2,0xFA,possivel_pac_comidona	# $t2= 0xFA (comidona) vai para possivel
+		#
+		li $v0,0				# que nao pode andar
+		j return_verifica_possibilidade		# se chegar aqui, pode andar
+
+	possivel_pac_comida:
+		lw $a0,40($s3) 		# carrega scoree do pac
+		addi $a0,$a0,10				# adiciona 10 na pontuação do pac
+		sw $a0,40($s3)				# $a0 = pontuação
+		lw $a2,36($s3)				# $a2 = posicao score
+		jal PRINT_SCORE
+		j possivel_pac
+		
+	possivel_pac_comidona:
+		lw $a0,40($s3)
+		addi $a0,$a0,50				# adiciona 50 na pontuação do pac
+		sw $a0,40($s3)				# $a0 = pontuação
+		lw $a2,36($s3)				# $a2 = posicao score
+		li $t4,300				# quantidade frames pac especial
+		sw $t4,60($s3)				# salva frames 
+		jal PRINT_SCORE
+		j possivel_pac
+	
+	possivel_pac:
+		li $t4,0				# Carrega a cor preta que representa o tile preto
+		sb $t4,0($s2)				# atualiza proxima posicao no map para preto
+		# carrega endereco da posicao atual (x e y antes de andar)
+		la $t0, map_vetor
+		la $t2, Xmap
+		mult $s1, $t2 				# $t1 = $a1(y) * 32 ; 
+		mflo $t1
+		add $t1, $t1, $s0 			# $t1 = $t1($a1(y) * 32) + $a0(x); 
+		add $t1, $t0, $t1 			# $t1 = map_vetor + y * 32 + x
+		# fim carrega endereco
+		li $t4,0				# carrega cor preta
+		sb $t4,0($t1)				# atualiza posicao atual do mapa para preta
+		li $v0,1				# indica que é possível andar
+		j return_verifica_possibilidade
+				
+	fantasma_possibilidade:
+		lbu $t2,0($s2)				# carrega $t2 (tile) no byte que $t0 corresponde.
+		beqz $t2,possivel_fantasma		# $t2 igual a 0x00(preto)
+		#
+		beq $t2,0xFF,possivel_fantasma		# $t2 = 0xFF (comida) vai para possivel comida
+		#
+		beq $t2,0xFA,possivel_fantasma		# $t2= 0xFA (comidona) vai para possivel
+	
+		beq $t2,0xAD,possivel_fantasma		# $t2= 0xAD (PORTA) vai para possivel
+		#
+		li $v0,0				# que nao pode andar
+		j return_verifica_possibilidade
+		possivel_fantasma:
+			li $v0,1
+			j return_verifica_possibilidade
+			
+	return_verifica_possibilidade:
+		lw $ra,8($sp)
+		lw $s2,4($sp)
+		lw $s3,0($sp)
+		addi $sp,$sp,12
+		jr $ra
+
+
+#a0 = x, $a1=y, $a2 = cor_objeto
+VERIFICA_POSSIBILIDADE_OBJETO:
+	jr $ra
+
+# $a0 = x, $a1 = y
+TILE_MAP:
+	la $t0, map_vetor
+	la $t2, Xmap
+	# carrega endereco da proxima posicao (x e y antes de andar)
+	mult $a1, $t2 				# $t1 = $a1(y) * 32 ; 
+	mflo $t1
+	add $t1, $t1, $a0 			# $t1 = $t1($a1(y) * 32) + $a0(x); 
+	add $t0, $t0, $t1 			# $t0 = map_vetor + y * 32 + x
+	lbu $v0,0($t0)
+	jr $ra	
+			
+MUSICA_INICIAL:
+	li $s1,30
+	la $s0,NOTAS_MUSICA
+	la $s2,DURACAO_NOTA
+	li $t0,0
+	li $a2,0	# instrumento
+	li $a3,75	# volume
+	#
+	loop_musica:	
+		beq $t0,$s1, fim_musica
+		lw $a0,0($s0)		# nota
+		lw $a1,0($s2)		# duracao
+		li $v0,31		# 33 da pausa a mais
+		syscall
+		move $a0,$a1		#pausa = duracao
+		li $v0,32
+		syscall
+		addi $s0,$s0,4		# proxima nota
+		addi $s2,$s2,4		# proxima duração
+		addi $t0,$t0,1
+		j loop_musica
+	fim_musica:
+		jr $ra
+
+####################################
+# RENDERIZA
+####################################
 RENDERIZA:
 	addi $sp,$sp,-4
 	sw $ra,0($sp)
@@ -188,11 +941,16 @@ RENDERIZA:
 	jal RENDERIZA_PAC
 	la $a0,pac_verde
 	jal RENDERIZA_PAC
+	la $a0,fantasma_vermelho
+	jal RENDERIZA_GHOST
 	lw $ra,0($sp)
 	addi $sp,$sp,4
 	jr $ra
 
-# $a0 = endereco_pac
+
+####################################
+# RENDERIZA PAC # $a0 = endereco_pac
+####################################
 RENDERIZA_PAC:
 	addi $sp,$sp,-4
 	sw $ra,0($sp)
@@ -275,8 +1033,98 @@ RENDERIZA_PAC:
 	exit_renderiza_pac:
 		lw $ra,0($sp)
 		addi $sp,$sp,4
-		jr $ra	
-	
+		jr $ra
+
+####################################
+# RENDERIZA GHOST # $a0 = endereco_pac
+####################################
+RENDERIZA_GHOST:
+	addi $sp,$sp,-4
+	sw $ra,0($sp)
+	move $s0,$a0
+	lw $s1,20($s0)
+	lw $s2,0($s0) 	# carrega x
+	lw $s3,4($s0) 	# carrega y
+	li $t0,10
+	mult $s2,$t0		# x multiplica por 10 obtendo x pixel
+	mflo $s2		# move resultado para $s2	
+	mult $s3,$t0		# y multiplica por 10 obtendo y pixel
+	mflo $s3		# move resultado para $s3
+	lw $t0,32($s0)		# Carrega direção
+	beq $t0,4,renderiza_cima_ghost 		
+	beq $t0,5,renderiza_direita_ghost 	
+	beq $t0,6,renderiza_baixo_ghost 	
+	beq $t0,7,renderiza_esquerda_ghost
+	j exit_renderiza_ghost
+ 	renderiza_cima_ghost:
+ 		move $a0,$s2		# x	
+		move $a1,$s3		# y
+		lw $a2,24($s0) 		# Tile atual	
+		jal DESENHO_ESCOLHA
+		move $a0,$s2		# x	
+		addi $a1,$s3,10		# y+10
+		lw $a2,28($s0) 		# Tile Anterior	
+		jal DESENHO_ESCOLHA
+		lw $a0,8($s0)		# xPixel
+		lw $a1,12($s0)		# yPixel
+		lw $a2,20($s0) 		# $a2 cor
+		move $a3,$s0		# $a3 = 0 top_ghost  	 	
+		jal DESENHO_ESCOLHA
+		j exit_renderiza_ghost
+	renderiza_direita_ghost:
+		move $a0,$s2		# x	
+		move $a1,$s3		# y
+		lw $a2,24($s0) 		# Tile atual	
+		jal DESENHO_ESCOLHA
+		addi $a0,$s2,-10	# x-10	
+		move $a1,$s3		# y
+		lw $a2,28($s0) 		# Tile Anterior	
+		jal DESENHO_ESCOLHA
+		lw $a0,8($s0)		# xPixel
+		lw $a1,12($s0)		# yPixel
+		lw $a2,20($s0) 		# $a2 cor
+		move $a3,$s0		# $a3 =1 direita_ghost  	 	
+		jal DESENHO_ESCOLHA
+		j exit_renderiza_ghost
+	renderiza_baixo_ghost:
+		move $a0,$s2		# x	
+		move $a1,$s3		# y
+		lw $a2,24($s0) 		# Tile atual	
+		jal DESENHO_ESCOLHA
+		move $a0,$s2		# x	
+		addi $a1,$s3,-10	# y-10
+		lw $a2,28($s0) 		# Tile Anterior	
+		jal DESENHO_ESCOLHA
+		lw $a0,8($s0)		# xPixel
+		lw $a1,12($s0)		# yPixel
+		lw $a2,20($s0) 		# $a2 cor
+		move $a3,$s0		# $a3 down_ghost  	 	
+		jal DESENHO_ESCOLHA
+		j exit_renderiza_ghost
+	renderiza_esquerda_ghost:
+		move $a0,$s2		# x	
+		move $a1,$s3		# y
+		lw $a2,24($s0) 		# Tile atual	
+		jal DESENHO_ESCOLHA
+		addi $a0,$s2,10		# x+10	
+		move $a1,$s3		# y
+		lw $a2,28($s0) 		# Tile Anterior	
+		jal DESENHO_ESCOLHA
+		lw $a0,8($s0)		# xPixel
+		lw $a1,12($s0)		# yPixel
+		lw $a2,20($s0) 		# $a2 cor
+		move $a3,$s0		# $a3 esquerda_ghost  	 	
+		jal DESENHO_ESCOLHA
+		j exit_renderiza_ghost
+	#
+	exit_renderiza_ghost:
+		lw $ra,0($sp)
+		addi $sp,$sp,4
+		jr $ra		
+
+#############################################
+# Inicia Pontuações #
+#############################################			
 INIT_PONTUACOES:
 	addi $sp,$sp,-8
 	sw $ra,0($sp)
@@ -317,30 +1165,52 @@ INIT_PONTUACOES:
 		addi $sp,$sp,8
 		jr $ra	    
 
-
-# $a0=numero a ser printado, $a2= linha(y)	
+#############################################
+# PRINT SCORE # $a0=numero a ser printado, $a2= linha(y)
+#############################################	
 PRINT_SCORE:
 	li $a1,260				# coluna
 	li $a3,0x00FF				# cores de frente(FF) e fundo(00) do texto
 	li $v0,101				# print int
 	syscall
 	jr $ra
-	 
-init_pac_yellow:
+
+###########################################
+# INICIA PAC AMARELO
+###########################################	 	 
+INIT_PAC_YELLOW:
 	addi $sp,$sp,-4
 	sw $ra,0($sp)
 	la $t0,pac_amarelo
 	la $a3,pac_man_open_right
-	j init_personagens
+	j INIT_PERSONAGEM
 
-init_pac_green:
+###########################################
+# INICIA PAC VERDE
+###########################################
+INIT_PAC_GREEN:
 	addi $sp,$sp,-4
 	sw $ra,0($sp)
 	la $t0,pac_verde
 	la $a3,pac_man_open_left
-	j init_personagens
-	
-init_ghost_red:
+	j INIT_PERSONAGEM
+
+###########################################
+# INICIA PERSONAGEM
+###########################################		
+INIT_PERSONAGEM:
+	lw $a0,8($t0)				# x inicial personagem
+	lw $a1,12($t0)				# y inicial personagem	mul $a0,$a0,10
+	lw $a2,20($t0)
+	jal PRINT_DESENHO_PERSONAGEM		# $a3 carrega o desenho que será printado
+	lw $ra,0($sp)
+	addi $sp,$sp,4
+	jr $ra
+
+###########################################
+# INICIA FANTASMA VERMELHO
+###########################################		
+INIT_GHOST_RED:
 	addi $sp,$sp,-4
 	sw $ra,0($sp)
 	la $a3,fantasma_vermelho
@@ -351,8 +1221,11 @@ init_ghost_red:
 	lw $ra,0($sp)
 	addi $sp,$sp,4
 	jr $ra
-	
-init_ghost_pink:
+
+###########################################
+# INICIA FANTASMA ROSA
+###########################################		
+INIT_GHOST_PINK:
 	addi $sp,$sp,-4
 	sw $ra,0($sp)
 	la $a3,fantasma_rosa
@@ -363,8 +1236,11 @@ init_ghost_pink:
 	lw $ra,0($sp)
 	addi $sp,$sp,4
 	jr $ra
-		
-init_ghost_blue:
+
+###########################################
+# INICIA FANTASMA AZUL
+###########################################		
+INIT_GHOST_BLUE:
 	addi $sp,$sp,-4
 	sw $ra,0($sp)
 	la $a3,fantasma_azul
@@ -375,8 +1251,11 @@ init_ghost_blue:
 	lw $ra,0($sp)
 	addi $sp,$sp,4
 	jr $ra
-	
-init_ghost_orange:
+
+###########################################
+# INICIA FANTASMA LARANJA
+###########################################		
+INIT_GHOST_ORANGE:
 	addi $sp,$sp,-4
 	sw $ra,0($sp)
 	la $a3,fantasma_laranja
@@ -387,466 +1266,7 @@ init_ghost_orange:
 	lw $ra,0($sp)
 	addi $sp,$sp,4
 	jr $ra
-	
-init_personagens:
-	lw $a0,8($t0)				# x inicial personagem
-	lw $a1,12($t0)				# y inicial personagem	mul $a0,$a0,10
-	lw $a2,20($t0)
-	jal PRINT_DESENHO_PERSONAGEM		# $a3 carrega o desenho que será printado
-	lw $ra,0($sp)
-	addi $sp,$sp,4
-	jr $ra
-
-#######################
-# branch right
-#######################			    		    
-move_right:
- 	#move $a0,$s0
- 	#move $a1,$s1
- 	lw $s0,8($s4)				# carrega xPixel
- 	lw $s1,12($s4)				# carrega yMap
- 	li $t0,10
- 	div $s0,$t0
- 	mflo $s0
- 	mfhi $t1				# resto x
- 	div $s1,$t0
- 	mflo $s1
- 	mfhi $t2				# resto y
- 	lw $t3,48($s4)
- 	beq $t3,1,verifica_right 		# A direção do personagem é igual a direita(1)
- 	bnez $t1,continua_direcao_anterior	# Se a direção é diferente e o restox != 0 (não pode mudar de direção)
- 	bnez $t2,continua_direcao_anterior	# Se a direção é diferente e o restoy != 0 (não pode mudar de direção)
- 	##			
-	verifica_right:
- 		addi $a0,$s0,1
- 		move $a1,$s1
- 		move $a3,$s4				# Guarda em $a3 o endereço do objeto(pac ou fantasma)
- 		jal VERIFICA_POSSIBILIDADE
- 		beqz $v0,verifica_direcao_right		# se $v0 = 0 não é possível
- 		li $t0,1				# 1 a direção é right
-		sw $t0,48($s4)				# atualiza direção
-		##
- 		sw $s0,0($s4)				# xMap
- 		sw $s1,4($s4)				# yMap
- 		#
- 		move $a0,$s0				
- 		move $a1,$s1
- 		jal TILE_MAP
- 		sw $v0,24($s4)
- 		##
- 		add $a0,$s0,-1
- 		move $a1,$s1
- 		jal TILE_MAP
- 		sw $v0, 28($s4)
-		##
-	atualiza_right:
-		lw $a0,8($s4)				# carrega posicao x pixel
- 		addi $a0,$a0,1				
- 		sw $a0,8($s4)				
- 		lw $a1,12($s4)				# carrega posicao y pixel
- 		lw $a2,20($s4)				# carrega cor_objeto
- 		jal VERIFICA_POSSIBILIDADE_OBJETO
-		j return_move
-	verifica_direcao_right:	
-		lw $t2,48($s4)				# A direção do personagem
- 		beq $t2,1,return_move			# direcao = 1(right) ( Se a direção é 1 já tentamos ir por ela)
- 		j continua_direcao_anterior
-
-#######################
-# branch left
-#######################			
-move_left:
- 	lw $s0,8($s4)			# carrega xPixel
- 	lw $s1,12($s4)			# carrega yMap
- 	li $t0,10
- 	div $s0,$t0
- 	mflo $s0
- 	mfhi $t1				# restox
- 	div $s1,$t0
- 	mflo $s1
- 	mfhi $t2				# restoy
- 	lw $t3,48($s4)
- 	addi $s0,$s0,1 # arredonda pra cima	
- 	beq $t3,3,verifica_left1 		# A direção do personagem é igual a esquerda(3)
- 	bnez $t1,continua_direcao_anterior	# Se a direção é diferente e o restox != 0 (não pode mudar de direção)
- 	bnez $t2,continua_direcao_anterior	# Se a direção é diferente e o restoy != 0 (não pode mudar de direção)
- 	# se chegar aqui a direção ta mudando e o xMap e yMap é uma posição válida
- 	addi $s0,$s0,-1 			# restos == 0 não precisa arredondar
- 	j verifica_left
- 	#
-	verifica_left1: 	
- 		bnez $t1,verifica_left	# Se é diferente igual e o restox != 0 (mantem arredondamento)
- 		addi $s0,$s0,-1 			# restos == 0 não precisa arredondar
- 	#
-	verifica_left:
- 		addi $a0,$s0,-1
- 		move $a1,$s1
- 		move $a3,$s4				# Guarda em $a3 o endereço do objeto(pac ou fantasma)
- 		jal VERIFICA_POSSIBILIDADE
- 		beqz $v0,verifica_direcao_left		# se $v0 = 0 não é possível
- 		li $t0,3				# 3 a direção é left
-		sw $t0,48($s4)				# atualiza direção
-		# TILE ATUAL
- 		sw $s0,0($s4)				# xMap
- 		sw $s1,4($s4)				# yMap
- 		# TILE_ANTERIOR
- 		move $a0,$s0				
- 		move $a1,$s1
- 		jal TILE_MAP
- 		sw $v0,24($s4)
- 		##
- 		add $a0,$s0,1
- 		move $a1,$s1
- 		jal TILE_MAP
- 		sw $v0, 28($s4)
-		##
-	atualiza_left:
-		lw $a0,8($s4)				# carrega posicao x pixel
- 		addi $a0,$a0,-1				
- 		sw $a0,8($s4)				
- 		lw $a1,12($s4)				# carrega posicao y pixel
- 		lw $a2,20($s4)				# carrega cor_objeto
- 		jal VERIFICA_POSSIBILIDADE_OBJETO
-		j return_move
-	verifica_direcao_left:	
-		lw $t2,48($s4)				# A direção do personagem
- 		beq $t2,3,return_move			# direcao = 3(left) ( Se a direção é 3 já tentamos ir por ela)
- 		j continua_direcao_anterior
-
-#######################
-# branch top
-#######################	
-move_top:
- 	#move $a0,$s0
- 	#move $a1,$s1
- 	lw $s0,8($s4)	# xMap
- 	lw $s1,12($s4)	# yPixel
- 	li $t0,10
- 	div $s1,$t0
- 	mflo $s1
- 	mfhi $t1				# restoy
- 	div $s0,$t0
- 	mflo $s0
- 	mfhi $t2				# restox
-	lw $t3,48($s4)
-	addi $s1,$s1,1 # arredonda pra cima
- 	beq $t3,0,verifica_top1 		# A direção do personagem é igual a top(0)
- 	bnez $t1,continua_direcao_anterior	# Se a direção é diferente e o restox != 0 (não pode mudar de direção)
- 	bnez $t2,continua_direcao_anterior	# Se a direção é diferente e o restoy != 0 (não pode mudar de direção)
- 	# se chegar aqui a direção ta mudando e o xMap e yMap é uma posição válida
- 	addi $s1,$s1,-1 			# restos == 0 não precisa arredondar
-	j verifica_top
-	#
-	verifica_top1:
-		bnez $t1,verifica_top			# Se a direção é diferente e o restoy != 0 (mantem arredondamento)
-		addi $s1,$s1,-1				# restos == 0 não precisa arredondar
-	#
-	verifica_top:
- 		addi $a1,$s1,-1
- 		move $a0,$s0
- 		move $a3,$s4				# Guarda em $a3 o endereço do objeto(pac ou fantasma)
- 		jal VERIFICA_POSSIBILIDADE
- 		beqz $v0,verifica_direcao_top		# se $v0 = 0 não é possível
- 		li $t0,0				# 0 a direção é top
-		sw $t0,48($s4)				# atualiza direção
-		#
-		sw $s0,0($s4)				# Guarda no xMap
- 		sw $s1,4($s4)				# Guarda no yMap
- 		# TILE ATUAL
- 		move $a0,$s0				
- 		move $a1,$s1
- 		jal TILE_MAP
- 		sw $v0,24($s4)
- 		## TILE ANTERIOR
- 		move $a0,$s0
- 		addi $a1,$s1,1
- 		jal TILE_MAP
- 		sw $v0, 28($s4)
-		##
-	atualiza_top:
-		lw $a1,12($s4)				# carrega posicao y pixel
- 		addi $a1,$a1,-1				
- 		sw $a1,12($s4)				
- 		lw $a0,8($s4)				# carrega posicao x pixel
- 		lw $a2,20($s4)				# carrega cor_objeto
- 		jal VERIFICA_POSSIBILIDADE_OBJETO
-		j return_move
-	verifica_direcao_top:	
-		lw $t2,48($s4)				# A direção do personagem
- 		beq $t2,0,return_move			# direcao = 0(top) ( Se a direção é 0 já tentamos ir por ela)
- 		j continua_direcao_anterior
-
-#######################
-# branch down
-#######################			
-move_down:
- 	lw $s0,8($s4)			# xPixel
- 	lw $s1,12($s4)			# yPixel
- 	li $t0,10
- 	div $s1,$t0
- 	mflo $s1
- 	mfhi $t1				# restoy
- 	div $s0,$t0
- 	mflo $s0				# resto x
- 	mfhi $t2				# restou
-	lw $t3,48($s4)
- 	beq $t3,2,verifica_down 		# A direção do personagem é igual a down(2)
- 	bnez $t1,continua_direcao_anterior	# Se a direção é diferente e o restoy != 0 (não pode mudar de direção)
- 	bnez $t2,continua_direcao_anterior	# Se a direção é diferente e o restox != 0 (não pode mudar de direção)
- 	##			
-	verifica_down:
- 		addi $a1,$s1,1
- 		move $a0,$s0
- 		move $a3,$s4				# Guarda em $a3 o endereço do objeto(pac ou fantasma)
- 		jal VERIFICA_POSSIBILIDADE
- 		beqz $v0,verifica_direcao_down		# se $v0 = 0 não é possível
- 		li $t0,2				# 2 a direção é down
-		sw $t0,48($s4)				# atualiza direção
-		## Atualiza posição
- 		sw $s0,0($s4)				# Guarda no xMap
- 		sw $s1,4($s4)				# Guarda no yMap
- 		# TILE ATUAL
- 		move $a0,$s0				
- 		move $a1,$s1
- 		jal TILE_MAP
- 		sw $v0,24($s4)
- 		## TILE ANTERIOR
- 		move $a0,$s0
- 		addi $a1,$s1,-1
- 		jal TILE_MAP
- 		sw $v0,28($s4)
-		##
-	atualiza_down:
-		lw $a1,12($s4)				# carrega posicao y pixel
- 		addi $a1,$a1,1				
- 		sw $a1,12($s4)				
- 		lw $a0,8($s4)				# carrega posicao x pixel
- 		lw $a2,20($s4)				# carrega cor_objeto
- 		jal VERIFICA_POSSIBILIDADE_OBJETO
-		j return_move
-	verifica_direcao_down:	
-		lw $t2,48($s4)				# A direção do personagem
- 		beq $t2,2,return_move			# direcao = 2(down) ( Se a direção é 2 já tentamos ir por ela)
- 		j continua_direcao_anterior
-
-# Continua na direção anterior do pac
-continua_direcao_anterior:
-	lw $t0,48($s4)
-	beq $t0,0,move_top 	# direção igual a 0(top)vai para move_top
-	beq $t0,1,move_right 	# direção igual a 1(right)vai para move_right
-	beq $t0,2,move_down 	# direção igual a 2(down)vai para move_down
-	beq $t0,3,move_left 	# direção igual a 3(left)vai para move_left
-	j return_move
-
-return_move:
-	lw $ra,0($sp)
-	addi $sp,$sp,4
-	jr $ra
 		
-# Move ghosts
-move_ghosts:
-	addi $sp,$sp,-4
-	sw $ra,0($sp)
-	jal move_ghost_red
-	jal move_ghost_pink
-	jal move_ghost_blue
-	lw $ra,0($sp)
-	addi $sp,$sp,4
-	jr $ra
-
-move_ghost_red:
-	addi $sp,$sp,-4
-	sw $ra,0($sp)
-	la $s4,fantasma_vermelho
-	lw $s0,0($s4)
-	lw $s1,4($s4)
-	#la $s3,ghost_red
-	seq $t0,$s0,11
-	beqz $t0,return_move			# se $t0 for zero $s0 já não é 11 e ele sai
-	seq $t1,$s1,10
-	beq $t0,$t1,move_ghost_init		# chegou aqui $t0 = 1 se $t1 = 1 o fantasma ta no ponto inicial
-	j return_move	
-	
-move_ghost_pink:
-	addi $sp,$sp,-4
-	sw $ra,0($sp)
-	la $s4,fantasma_rosa
-	lw $s0,0($s4)
-	lw $s1,4($s4)
-	#la $s3,ghost_pink
-	seq $t0,$s0,12
-	beqz $t0,return_move			# se $t0 for zero $s0 já não é 12 e ele sai
-	seq $t1,$s1,10
-	beq $t0,$t1,move_ghost_init		# chegou aqui $t0 = 1 se $t1 = 1 o fantasma ta no ponto inicial
-	j return_move
-	
-move_ghost_blue:
-	addi $sp,$sp,-4
-	sw $ra,0($sp)
-	la $s4,fantasma_azul
-	lw $s0,0($s4)
-	lw $s1,4($s4)
-	#la $s3,ghost_blue
-	seq $t0,$s0,13
-	beqz $t0,return_move			# se $t0 for zero $s0 já não é 13 e ele sai
-	seq $t1,$s1,10
-	beq $t0,$t1,move_ghost_init		# chegou aqui $t0 = 1 se $t1 = 1 o fantasma ta no ponto inicial
-	j return_move
-
-move_ghost_init:
-	move $a0,$s0
- 	move $a1,$s1
- 	addi $t1,$s1,-2				
- 	sw $s0,8($s4)				# Salva nova coordenada x
-	sw $t1,12($s4)				# Salva nova coordenada y
-	li $s6,0
-loop_ghost_preto:
-	move $a0,$s0
- 	addi $a1,$s1,9
-	li $a3,0x00 				# reset linha preta
-	#jal PRINT_LINHA_HORIZONTAL	
-	addi $s1,$s1,-1
-	move $a0,$s0
-	move $a1,$s1
-	move $a3,$s3 				# $s3 contem o desenho respectivo 
-	jal PRINT_DESENHO
-	addi $s6,$s6,1
-	bne $s6,10,loop_ghost_preto
-	li $s6,0
-loop_ghost_cinza:
-	move $a0,$s0
-	addi $a1,$s1,9
-	li $a3,0xAD				# reset linha cinza
-	#jal PRINT_LINHA_HORIZONTAL
-	addi $s1,$s1,-1
-	move $a0,$s0
-	move $a1,$s1
-	move $a3,$s3				# $s2 contem o desenho respectivo
-	jal PRINT_DESENHO
-	addi $s6,$s6,1
-	bne $s6,10,loop_ghost_cinza
-	j return_move
-
-#######################
-# VERIFICA POSSIBILIDADE
-#######################	
-#$a0 = x, $a1 = y, $a3 = endereco_objeto(pac,ghost)
-VERIFICA_POSSIBILIDADE:
-	addi $sp,$sp,-12
-	sw $ra,8($sp)
-	sw $s2,4($sp)
-	sw $s3,0($sp)
-	move $s3,$a3		# $s3 = endereco_objeto
-	la $t0, map_vetor
-	la $t2, Xmap
-	# carrega endereco da proxima posicao (x e y antes de andar)
-	mult $a1, $t2 				# $t1 = $a1(y) * 32 ; 
-	mflo $t1
-	add $t1, $t1, $a0 			# $t1 = $t1($a1(y) * 32) + $a0(x); 
-	add $s2, $t0, $t1 			# $t0 = map_vetor + y * 32 + x
-	lw $t4, 20($s3) 			# carrega $t4 cor do objeto(pac ou fantasma)
-	beq $t4,0x3F,pac_possibilidade		# $t4 = 0x3F (pac_amarelo )vai para pac_possibilidade
-	#	
-	beq $t4,0x18,pac_possibilidade		# $t4 = 0x18 (pac_verde) vai para pac_possibilidade
-	#
-	beq $t4,0x07,fantasma_possibilidade	# $t4 = 0x07 (fantasma_vermelho) vai para fantasma_possibilidade
-	li $v0,0				# Indica que que não é um pac ou um fantasma
-	j return_verifica_possibilidade		# se chegar aqui, não é um pac ou um fantasma
-
-	pac_possibilidade:
-		lbu $t2,0($s2)				# carrega $t2 (tile) no byte que $t0 corresponde.
-		beqz $t2,possivel_pac			# $t2 igual a 0x00(preto)
-		#
-		beq $t2,0xFF,possivel_pac_comida	# $t2 = 0xFF (comida) vai para possivel comida
-		#
-		beq $t2,0xFA,possivel_pac_comidona	# $t2= 0xFA (comidona) vai para possivel
-		#
-		li $v0,0				# que nao pode andar
-		j return_verifica_possibilidade		# se chegar aqui, pode andar
-
-	possivel_pac_comida:
-		lw $a0,40($s3) 		# carrega scoree do pac
-		addi $a0,$a0,10				# adiciona 10 na pontuação do pac
-		sw $a0,40($s3)				# $a0 = pontuação
-		lw $a2,36($s3)				# $a2 = posicao score
-		jal PRINT_SCORE
-		j possivel_pac
-		
-	possivel_pac_comidona:
-		lw $a0,40($s3)
-		addi $a0,$a0,50				# adiciona 50 na pontuação do pac
-		sw $a0,40($s3)				# $a0 = pontuação
-		lw $a2,36($s3)				# $a2 = posicao score
-		jal PRINT_SCORE
-		j possivel_pac
-	
-	possivel_pac:
-		li $t4,0				# Carrega a cor preta que representa o tile preto
-		sb $t4,0($s2)				# atualiza proxima posicao no map para preto
-		# carrega endereco da posicao atual (x e y antes de andar)
-		la $t0, map_vetor
-		la $t2, Xmap
-		mult $s1, $t2 				# $t1 = $a1(y) * 32 ; 
-		mflo $t1
-		add $t1, $t1, $s0 			# $t1 = $t1($a1(y) * 32) + $a0(x); 
-		add $t1, $t0, $t1 			# $t1 = map_vetor + y * 32 + x
-		# fim carrega endereco
-		li $t4,0				# carrega cor preta
-		sb $t4,0($t1)				# atualiza posicao atual do mapa para preta
-		li $v0,1				# indica que é possível andar
-		j return_verifica_possibilidade
-				
-	fantasma_possibilidade:
-		j return_verifica_possibilidade
-
-	return_verifica_possibilidade:
-		lw $ra,8($sp)
-		lw $s2,4($sp)
-		lw $s3,0($sp)
-		addi $sp,$sp,12
-		jr $ra
-
-
-#a0 = x, $a1=y, $a2 = cor_objeto
-VERIFICA_POSSIBILIDADE_OBJETO:
-	jr $ra
-
-# $a0 = x, $a1 = y
-TILE_MAP:
-	la $t0, map_vetor
-	la $t2, Xmap
-	# carrega endereco da proxima posicao (x e y antes de andar)
-	mult $a1, $t2 				# $t1 = $a1(y) * 32 ; 
-	mflo $t1
-	add $t1, $t1, $a0 			# $t1 = $t1($a1(y) * 32) + $a0(x); 
-	add $t0, $t0, $t1 			# $t0 = map_vetor + y * 32 + x
-	lbu $v0,0($t0)
-	jr $ra	
-			
-MUSICA_INICIAL:
-	li $s1,30
-	la $s0,NOTAS_MUSICA
-	la $s2,DURACAO_NOTA
-	li $t0,0
-	li $a2,0	# instrumento
-	li $a3,75	# volume
-	#
-	loop_musica:	
-		beq $t0,$s1, fim_musica
-		lw $a0,0($s0)		# nota
-		lw $a1,0($s2)		# duracao
-		li $v0,31		# 33 da pausa a mais
-		syscall
-		move $a0,$a1		#pausa = duracao
-		li $v0,32
-		syscall
-		addi $s0,$s0,4		# proxima nota
-		addi $s2,$s2,4		# proxima duração
-		addi $t0,$t0,1
-		j loop_musica
-	fim_musica:
-		jr $ra
-	
 #######################
 # Print MAPA
 #######################		
@@ -921,21 +1341,77 @@ DESENHO_ESCOLHA:
     desenho_personagem:		
 	lw $t1,16($a3) 				# $t0 tipo do personagem
 	beq $t1,1,personagem_pac
-	lw $t0, 32($a3)				# personagem ghost
-	j switch_desenho_personagem
+	personagem_ghost:	
+		lw $t0, 32($a3)				# personagem ghost
+		la $t3,quantidade_players
+		lbu $t3,0($t3)
+		beq $t3,1,single_player_ativo 		# se a quantidade de player é igual a 1 os fantasmas que mudam se tiver powerUP
+		#se chegar aqui o jogo ta multplayer e caso tenha power up o fantasmas não mudam
+		j switch_desenho_personagem
+		single_player_ativo:
+			lw $t4,40($a3)				# $t4 = tempo powerUP
+			beq $t4,0,switch_desenho_personagem 	# se powerUP = 0, então ele está inativo e vai para switch
+			#######################
+			# PowerUp  ativo
+			#######################
+			power_up_ativo:
+				addi $t4,$t4,-1			# diminui o tempo do powerUp
+				sw $t4,40($a3)			# salva power up
+				###########
+				la $a3,ghost_azul 		# Carrega fantasma azul
+				slti $t0,$t4,40			# $t0 = 1 se o tempo for menor 40
+				beq $t0,1,ghost_power_up_cor_troca
+				# se chegar aqui mantem a cor azul
+				j print_personagem 
+			ghost_power_up_cor_troca:
+				li $t3,2
+				div $t4,$t3
+				mfhi $t3
+				beqz $t3,ghost_power_up_cor_branca
+				# se chegar aqui mantem a cor azul
+				j print_personagem 
+			ghost_power_up_cor_branca:
+				# se chegar aqui o resto é zero e 
+				la $a3,ghost_branco		# carrega ghost branco
+				j print_personagem
+		j switch_desenho_personagem
 	personagem_pac:	
-	lw $t0,48($a3)	
+		lw $t0,48($a3)	
+		la $t3,quantidade_players
+		lbu $t3,0($t3)
+		beq $t3,1,switch_desenho_personagem 	# se a quantidade de player é igual a 1 os fantasmas que mudam
+		# se chegar aqui quantidade de player maior  que 1, logo os player que mudam(piscam no powerUP)
+		lw $t4,60($a3)				# $t4 = powerUP
+		beq $t4,0,switch_desenho_personagem 	# se powerUP = 0, então ele está inativo e vai para switch
+		#######################
+		# PowerUp pac ativo
+		#######################
+		power_up_pac_ativo:
+			lw $t3,64($a3) 				# $t3 = indicar(troca ou não a cor)
+			beq $t3,0,nao_troca_cor_personagem
+			li $t3,0
+			sw $t3,64($a3)  		# na proxima nao troca a cor
+			addi $t4,$t4,-1			# diminui o tempo do powerUp
+			sw $t4,60($a3) 			# salvar tempo
+			li $a2, 0xFF 			# TROCA A COR PARA BRANCA
+			j switch_desenho_personagem
+		nao_troca_cor_personagem:
+			li $t3,1
+			sw $t3,64($a3) 			# na proxima troca a cor
+			addi $t4,$t4,-1			# diminui o tempo do powerUp
+			sw $t4,60($a3) 			# salvar tempo
+		########################
 	switch_desenho_personagem:	
 		beq $t0,0,desenho_pac_up		# 0 representa desenho pac cima
 		beq $t0,1,desenho_pac_right		# 1 representa desenho pac direita
 		beq $t0,2,desenho_pac_down		# 2 representa desenho pac baixo
 		beq $t0,3,desenho_pac_left		# 3 representa desenho pac left
 		beq $t0,4,desenho_ghost_up		# 4 representa desenho ghost up
-		beq $t0,5,desenho_ghost_right		# 4 representa desenho ghost right
-		beq $t0,6,desenho_ghost_down		# 4 representa desenho ghost down
-		beq $t0,7,desenho_ghost_left		# 4 representa desenho ghost left
+		beq $t0,5,desenho_ghost_right		# 5 representa desenho ghost right
+		beq $t0,6,desenho_ghost_down		# 6 representa desenho ghost down
+		beq $t0,7,desenho_ghost_left		# 6 representa desenho ghost left
 		j return_desenho_escolha
-		####
+		################################################
 		desenho_pac_up:
 			lw $t1,52($a3)
 			beq $t1,0,desenho_pac_up_aberta
@@ -961,7 +1437,7 @@ DESENHO_ESCOLHA:
 				sw $t0,56($a3)
 				la $a3,pac_man_close_y
 				j print_personagem	
-		#########	
+		###############################################	
 		desenho_pac_right:
 			lw $t1,52($a3)
 			beq $t1,0,desenho_pac_right_aberta
@@ -1041,19 +1517,19 @@ DESENHO_ESCOLHA:
 				j print_personagem
 		#################################################
 		desenho_ghost_up:
-			la $a3,ghost_up1
+			la $a3,ghost_up2
 			j print_personagem
 		#################################################
 		desenho_ghost_right:
-			la $a3,ghost_right1
+			la $a3,ghost_right2
 			j print_personagem
 		#################################################
 		desenho_ghost_down:
-			la $a3,ghost_down1
+			la $a3,ghost_down2
 			j print_personagem
 		#################################################
 		desenho_ghost_left:
-			la $a3,ghost_left1
+			la $a3,ghost_left2
 			j print_personagem
 	#
 	print_personagem:
@@ -1119,9 +1595,9 @@ PRINT_DESENHO:
 		addi $sp,$sp,32
 		jr $ra
 
-#######################
+####################################################
 # PRINT DESENHO PERSONAGEM (troca a cor genérica 0x3F, pela cor indicada)
-#######################	
+####################################################
 # $a0 = x, $a1 = y, $a3 = endereco_inicio_desenho, $a2=cor que será modificada	
 PRINT_DESENHO_PERSONAGEM:
 	addi $sp,$sp,-32
@@ -1203,3 +1679,106 @@ ENDERECO_PONTO:
 		la $a0, ERRO_PONTO
 		syscall
 		j EXIT
+
+##########################
+# Reseta memoria de dados para o fpga
+##########################
+RESETA_DATA_MEMORY:
+	li $t0,768
+	li $t1,0
+	la $t2,map_vetor
+	la $t3,map_vetor_backup
+loop_reset_map_memory: 
+	beq $t1,$t0,reset_pac_amarelo
+	lbu $t4,0($t3) # ler de map_vetor_backup
+	sb $t4,0($t2)	# salva em map_vetor	
+	addi $t2,$t2,1
+	addi $t3,$t3,1
+	addi $t1,$t1,1
+	j loop_reset_map_memory
+##################
+reset_pac_amarelo:
+	li $t0,16
+	li $t1,0
+	la $t2,pac_amarelo
+	la $t3,pac_amarelo_backup
+	loop_reset_pac_amarelo: 
+		beq $t1,$t0,reset_pac_verde
+		lbu $t4,0($t3) 	# ler de pac_amarelo_backup
+		sw $t4,0($t2)	# salva em pac_amarelo	
+		addi $t2,$t2,4
+		addi $t3,$t3,1
+		addi $t1,$t1,1
+		j loop_reset_pac_amarelo
+###################
+reset_pac_verde:
+	li $t0,16
+	li $t1,0
+	la $t2,pac_verde
+	la $t3,pac_verde_backup
+	loop_reset_pac_verde: 
+		beq $t1,$t0,reset_fantasma_vermelho
+		lbu $t4,0($t3) 	# ler de pac_amarelo_backup
+		sw $t4,0($t2)	# salva em pac_amarelo	
+		addi $t2,$t2,4
+		addi $t3,$t3,1
+		addi $t1,$t1,1
+		j loop_reset_pac_verde	
+######################
+reset_fantasma_vermelho:
+	li $t0,11
+	li $t1,0
+	la $t2,fantasma_vermelho
+	la $t3,fantasma_vermelho_backup
+	loop_reset_fantasma_vermelho: 
+		beq $t1,$t0,reset_fantasma_rosa
+		lbu $t4,0($t3) 	# ler de fantasma_vermelho_backup
+		sw $t4,0($t2)	# salva em fantasma_vermelho
+		addi $t2,$t2,4
+		addi $t3,$t3,1
+		addi $t1,$t1,1
+		j loop_reset_fantasma_vermelho
+######################
+reset_fantasma_rosa:
+	li $t0,11
+	li $t1,0
+	la $t2,fantasma_rosa
+	la $t3,fantasma_rosa_backup
+	loop_reset_fantasma_rosa: 
+		beq $t1,$t0,reset_fantasma_azul
+		lbu $t4,0($t3) 	# ler de fantasma_rosa_backup
+		sw $t4,0($t2)	# salva em fantasma_rosa
+		addi $t2,$t2,4
+		addi $t3,$t3,1
+		addi $t1,$t1,1
+		j loop_reset_fantasma_rosa
+######################
+reset_fantasma_azul:
+	li $t0,11
+	li $t1,0
+	la $t2,fantasma_azul
+	la $t3,fantasma_azul_backup
+	loop_reset_fantasma_azul: 
+		beq $t1,$t0,reset_fantasma_laranja
+		lbu $t4,0($t3) 	# ler de fantasma_azul_backup
+		sw $t4,0($t2)	# salva em fantasma_azul
+		addi $t2,$t2,4
+		addi $t3,$t3,1
+		addi $t1,$t1,1
+		j loop_reset_fantasma_azul
+######################
+reset_fantasma_laranja:
+	li $t0,11
+	li $t1,0
+	la $t2,fantasma_laranja
+	la $t3,fantasma_laranja_backup
+	loop_reset_fantasma_laranja: 
+		beq $t1,$t0,exit_reset
+		lbu $t4,0($t3) 	# ler de fantasma_laranja_backup
+		sw $t4,0($t2)	# salva em fantasma_laranja
+		addi $t2,$t2,4
+		addi $t3,$t3,1
+		addi $t1,$t1,1
+		j loop_reset_fantasma_laranja		
+exit_reset:
+	jr $ra
