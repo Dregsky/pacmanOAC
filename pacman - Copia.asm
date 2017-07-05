@@ -19,17 +19,7 @@
 .eqv control_two_right 0x68 #h mars
 .eqv control_two_up 0x74 #t mars
 .eqv control_two_down 0x67 #g mars
-#
-.eqv control_three_left 0x0 #< mars
-.eqv control_three_right 0x1 #> mars
-.eqv control_three_up 0x2 #^ mars
-.eqv control_three_down 0x3 #\/ mars
-#
-.eqv control_four_left 0x0 #< mars
-.eqv control_four_right 0x1 #> mars
-.eqv control_four_up 0x2 #^ mars
-.eqv control_four_down 0x3 #\/ mars
-#
+
 .eqv control_1 0xf10efd02
 .eqv control_2 0xf00ffd02
 .eqv control_3 0xf30cfd02
@@ -75,23 +65,19 @@
 	pac_amarelo: .word 2,22,20,220,1,0x3F,0xFF,0x99,3,30,0,0xf708fd02,1,0,1,0,0
 	pac_verde_backup: .word 22,22,220,220,1,0x18,0xFF,0x99,3,80,0,0x66,3,0,1,0,0
 	pac_verde: .word 22,22,220,220,1,0x18,0xFF,0x99,3,80,0,0x66,3,0,1,0,0
-	pac_azul_backup: .word 2,1,20,10,1,0xC0,0xFF,0x99,3,130,0,0x1,1,0,1,0,0
-	pac_azul: .word 2,1,20,10,1,0xC0,0xFF,0x99,3,130,0,0x1,1,0,1,0,0
-	pac_roxo_backup: .word 22,1,220,10,1,0x86,0xFF,0x99,3,180,0,0x0,1,0,1,0,0
-	pac_roxo: .word 22,1,220,10,1,0x86,0xFF,0x99,3,130,0,0x0,1,0,1,0,0
 	#		      	xMap,yMap,xPixel,yPixel,tipo_personagem(1-pac,2-fantasma), cor, tile_atual, tile_anterior, 
 	#			ultima_direcao,indicador_perninhas, powerUp(Troca Branco azul), indicador_casa, andar_aleatorio
 	fantasma_vermelho: .word 11,10,110,100,2,0x07,0x00,0x99,4,0,0,20,0
 	fantasma_vermelho_backup: .word 11,10,110,100,2,0x07,0x00,0x99,4,0,0,20,0
-	fantasma_rosa: .word 12,10,120,100,2,0x87,0x00,0x99,4,0,0,20,0
+	fantasma_rosa: .word 12,10,120,100,2,0x87,0x00,0x99,4,0,0,20,30
 	fantasma_rosa_backup: .word 12,10,120,100,2,0x87,0x00,0x99,4,0,0,20,0
-	fantasma_azul: .word 13,10,130,100,2,0xF8,0x00,0x99,4,0,0,20,0
+	fantasma_azul: .word 13,10,130,100,2,0xF8,0x00,0x99,4,0,0,20,30
 	fantasma_azul_backup: .word 13,10,130,100,2,0xF8,0x00,0x99,4,0,0,20,0
-	fantasma_laranja: .word 12,8,120,80,2,0x27,0x00,0x00,5,0,0,0,0
+	fantasma_laranja: .word 12,8,120,80,2,0x27,0x00,0x00,5,0,0,0,30
 	fantasma_laranja_backup: .word 12,8,120,80,2,0x27,0x00,0x00,5,0,0,0,0
 	##
 	# Quantidade Players	
-	quantidade_players: .word 4
+	quantidade_players: .word 1
 	ERRO_PONTO: .asciiz "Ponto fora do limite\n"
 	
 			   # SI,SI,F#,D#,SI,F#,D#,DO,DO,G ,MI,DO,G ,MI,SI,SI,F#,D#,SI,F#,D#,RE,D#,MI,FA,G ,G#,LA,A#,SI
@@ -104,7 +90,7 @@
 MAIN:  
 	jal RESET_DATA_MEMORY
 	#jal MUSICA_INICIAL
-	#jal MENU
+	jal MENU
 	jal MAPA
 	#jal TESTE_RETA
 	#jal loop
@@ -134,7 +120,7 @@ loop_menu:
 	lw $s3,0($s1)
 	beqz $s3,loop_menu  # Se for zero 
 	
-	la $t0,quantidade_players # carrega endereco quantidade de players
+	la $t0,quantidade_players # carrega quantidade de players
 	la $t1,control_1
 	la $t2,control_2
 	la $t3,control_3
@@ -170,25 +156,14 @@ START:
 	addi $sp,$sp,-4
 	sw $ra,0($sp)
 	li $t0, 0xffff
-	la $t1, quantidade_players
-	lw $t1,0($t1)
-	beq $t1,1,start_always
-	beq $t1,2,dois_players_start
-	beq $t1,3,tres_players_start
-	quatro_players_start:
-		jal INIT_PAC_ROXO
-	tres_players_start:
-		jal INIT_PAC_BLUE
-	dois_players_start:
-		jal INIT_PAC_GREEN
-	start_always:
-		jal INIT_PONTUACOES
-		jal INIT_PAC_YELLOW
-		jal INIT_GHOST_RED
-		jal INIT_GHOST_PINK
-		jal INIT_GHOST_BLUE
-		jal INIT_GHOST_ORANGE
-		#jal MUSICA_INICIAL
+	jal INIT_PONTUACOES
+	jal INIT_PAC_YELLOW
+	jal INIT_PAC_GREEN
+	jal INIT_GHOST_RED
+	jal INIT_GHOST_PINK
+	jal INIT_GHOST_BLUE
+	jal INIT_GHOST_ORANGE
+	#jal MUSICA_INICIAL
 	loop_ready_tecla:
 		##############
 		# TECLADO
@@ -233,76 +208,33 @@ START:
     		li $t1, 0x71                    	# Carrega a tecla 'q' para sair
     		beq $t1, $s5, EXIT
     		#
-    		beq $t1,1,check_always
-		beq $t1,2,check_dois_players
-		beq $t1,3,check_tres_players
-		check_quatro_players:
-			#roxo
-			#
-			li $s7,0x86 #azul			# Marca $s7 clicado pac blue
-			la $t1, control_four_left		# Carrega a tecla 'f'
-    			beq $t1, $s5, moves_check
-    			la $t1, control_four_right               # Carrega a tecla 'h' 
-			beq $t1, $s5, moves_check
-			la $t1, control_four_up                	# Carrega a tecla 't' 
-			beq $t1, $s5, moves_check
-			la $t1, control_four_down               	# Carrega a tecla 'g' 
-			beq $t1, $s5, moves_check
-		check_tres_players:
-			#
-			li $s7,0xC0 #azul			# Marca $s7 clicado pac blue
-			la $t1, control_three_left		# Carrega a tecla 'f'
-    			beq $t1, $s5, moves_check
-    			la $t1, control_three_right               # Carrega a tecla 'h' 
-			beq $t1, $s5, moves_check
-			la $t1, control_three_up                	# Carrega a tecla 't' 
-			beq $t1, $s5, moves_check
-			la $t1, control_three_down               	# Carrega a tecla 'g' 
-			beq $t1, $s5, moves_check
-		check_dois_players:
-			#
-			li $s7,0x18	#verde			# Marca $s7 clicado pac green
-			la $t1, control_two_left		# Carrega a tecla 'f'
-    			beq $t1, $s5, moves_check
-    			la $t1, control_two_right               # Carrega a tecla 'h' 
-			beq $t1, $s5, moves_check
-			la $t1, control_two_up                	# Carrega a tecla 't' 
-			beq $t1, $s5, moves_check
-			la $t1, control_two_down               	# Carrega a tecla 'g' 
-			beq $t1, $s5, moves_check
-		check_always:
-			li $s7,0x3F    				# Marca $s7 clicado pac yellow
-    			la $t1, control_one_left		# Carrega a tecla 'a'
-    			beq $t1, $s5, moves_check
-    			la $t1, control_one_right               # Carrega a tecla 'd' para verificar se foi a pressionada
-			beq $t1, $s5, moves_check	
-			la $t1, control_one_up                # Carrega a tecla 'w' para verificar se foi a pressionada
-			beq $t1, $s5, moves_check
-			la $t1, control_one_down                # Carrega a tecla 's' para verificar se foi a pressionada
-			beq $t1, $s5, moves_check
+    		li $s7,0x3F    				# Marca $s7 clicado pac yellow
+    		la $t1, control_one_left		# Carrega a tecla 'a'
+    		beq $t1, $s5, moves_check
+    		la $t1, control_one_right               # Carrega a tecla 'd' para verificar se foi a pressionada
+		beq $t1, $s5, moves_check	
+		la $t1, control_one_up                # Carrega a tecla 'w' para verificar se foi a pressionada
+		beq $t1, $s5, moves_check
+		la $t1, control_one_down                # Carrega a tecla 's' para verificar se foi a pressionada
+		beq $t1, $s5, moves_check
+		#
+		li $s7,0x18				# Marca $s7 clicado pac green
+		la $t1, control_two_left		# Carrega a tecla 'f'
+    		beq $t1, $s5, moves_check
+    		la $t1, control_two_right               # Carrega a tecla 'h' 
+		beq $t1, $s5, moves_check
+		la $t1, control_two_up                	# Carrega a tecla 't' 
+		beq $t1, $s5, moves_check
+		la $t1, control_two_down               	# Carrega a tecla 'g' 
+		beq $t1, $s5, moves_check
 		li $s7,-1				# -1 indicador para indicar que nenhuma tecla foi teclada
 	moves_check:
 		addi $sp,$sp,-4
 		sw $s5,0($sp)				# Guarda valor de $s5
-		la $t1, quantidade_players
-		lw $t1,0($t1)
-		beq $t1,1,move_always
-		beq $t1,2,move_dois_players
-		beq $t1,3,move_tres_players
-		move_quatro_players:
-			lw $s5,0($sp)	
-			jal MOVE_PAC_ROXO
-		move_tres_players:
-			lw $s5,0($sp)	
-			jal MOVE_PAC_BLUE
-		move_dois_players:
-			lw $s5,0($sp)	
-			jal MOVE_PAC_GREEN
-		move_always:
-			lw $s5,0($sp)	
-    			jal MOVE_PAC_YELLOW
-    			#		
-			jal MOVE_GHOSTS
+    		jal MOVE_PAC_YELLOW
+    		lw $s5,0($sp)				
+    		jal MOVE_PAC_GREEN
+		jal MOVE_GHOSTS
     		addi $sp,$sp,4
     		#
     		jal RENDERIZA
@@ -360,57 +292,6 @@ MOVE_PAC_GREEN:
 		# 
 		j return_move
 
-#######################
-# Move pac blue
-#######################	 
-MOVE_PAC_BLUE:
-	la $s4,pac_azul
-	beq $s7,0xC0,continue_pac_blue		# Se $s7 = blue(0xC0), foi clicado alguma tecla do pac green
-	lw $s5,44($s4)				# Se chegou aqui pac blue não clicado. Carrega a ultima tecla apertada
-	continue_pac_blue:
-		sw $s5,44($s4)				# atualiza o valor para ultima tecla apertada
-		addi $sp,$sp,-4
-		sw $ra,0($sp) 
-	
-		la $t1, control_three_left		# Carrega a tecla 'f'
-		beq $t1, $s5, move_left
-    		#
-    		la $t1, control_three_right               # Carrega a tecla 'h' 
-		beq $t1, $s5, move_right
-		#
-		la $t1, control_three_up                	# Carrega a tecla 't' 
-		beq $t1, $s5, move_top
-		#
-		la $t1, control_three_down               	# Carrega a tecla 'g' 
-		beq $t1, $s5, move_down	
-		# 
-		j return_move
-		
-#######################
-# Move pac roxo
-#######################	 
-MOVE_PAC_ROXO:
-	la $s4,pac_roxo
-	beq $s7,0x86,continue_pac_roxo		# Se $s7 = roxo(0x86), foi clicado alguma tecla do pac roxo
-	lw $s5,44($s4)				# Se chegou aqui pac blue não clicado. Carrega a ultima tecla apertada
-	continue_pac_roxo:
-		sw $s5,44($s4)				# atualiza o valor para ultima tecla apertada
-		addi $sp,$sp,-4
-		sw $ra,0($sp) 
-	
-		la $t1, control_four_left		# Carrega a tecla 'f'
-		beq $t1, $s5, move_left
-    		#
-    		la $t1, control_four_right               # Carrega a tecla 'h' 
-		beq $t1, $s5, move_right
-		#
-		la $t1, control_four_up                	# Carrega a tecla 't' 
-		beq $t1, $s5, move_top
-		#
-		la $t1, control_four_down               	# Carrega a tecla 'g' 
-		beq $t1, $s5, move_down	
-		# 
-		j return_move
 #######################
 # branch right
 #######################			    		    
@@ -673,8 +554,6 @@ MOVE_GHOSTS:
 	#jal move_ghost_orange
 	jal MOVE_GHOST_RED
 	jal MOVE_GHOST_PINK
-	jal MOVE_GHOST_BLUE
-	jal MOVE_GHOST_ORANGE
 	#jal move_ghost_blue
 	lw $ra,0($sp)
 	lw $s4,4($sp)
@@ -682,14 +561,15 @@ MOVE_GHOSTS:
 	lw $s1,12($sp)
 	addi $sp,$sp,16
 	jr $ra
-
-###################
-# MOVE GHOST RED
-##################	
+	
+move_ghost_orange:
+	j return_move
+	
 MOVE_GHOST_RED:
 	addi $sp,$sp,-4
 	sw $ra,0($sp)
 	la $s4,fantasma_vermelho
+	la $t1,pac_amarelo
 	lw $t0,44($s4) 				# carrega posicoes para sair da casa
 	bnez $t0,ghost_sai_casa_top 		# Faz o ghost sair da casinha
 	lw $t0,40($s4)				# Carrega power up
@@ -701,7 +581,6 @@ MOVE_GHOST_RED:
 	lw $t3,32($s4)				# carrega direção ghost
 	j padrao_ghost_horario
 	procura_pac_amarelo:
-		la $t1,pac_amarelo
 		li $t0,20
 		sw $t0,48($s4) 		# salva andar 30 frames aleatorios
 		lw $t2,8($s4) 		# x fantasma
@@ -711,123 +590,25 @@ MOVE_GHOST_RED:
 		sub $s0,$t2,$t4 	# $s0 = xG - xP
 		sub $s1,$t3,$t5 	# $s1 = yG - yP
 		blt $s0,0,x_negativo_ghost
-		#######
-		# x positivo
-		#######
-		j x_positivo_ghost
+	#######
+	# x positivo
+	#######
+	j x_positivo_ghost
 	
-###################
-# MOVE GHOST PINK
-##################	
+	
 MOVE_GHOST_PINK:
 	addi $sp,$sp,-4
 	sw $ra,0($sp)
 	la $s4,fantasma_rosa
 	lw $t0,44($s4)
 	bnez $t0,ghost_sai_casa_top # Faz o ghost sair da casinha
-	bnez $t0,padrao_ghost_aleatorio1 	# Se o PowerUp esta ativo
-	la $t3,quantidade_players
-	lw $t3,0($t3)
-	blt $t3,2,padrao_ghost_aleatorio1 	# Se tiver só um pac anda no padrão aleatorio 1
-	#####################
-	# Tem 2 ou mais pac
-	lw $t0,48($s4) 				# carrega quantidade anda aleatorio
-	beq $t0,0,procura_pac_pink 		# se a quantidade anda aleatorio for zero, procura o pac
-	addi $t0,$t0,-1 			# decrementa andar aleatorio
-	sw $t0,48($s4) 				# salva andar aleatorio decrementado
-	lw $t3,32($s4)				# carrega direção ghost
-	j padrao_ghost_horario
-	procura_pac_pink:
-		la $t1,pac_verde
-		li $t0,20
-		sw $t0,48($s4) 		# salva andar 30 frames aleatorios
-		lw $t2,8($s4) 		# x fantasma
-		lw $t3,12($s4) 		# y fantasm
-		lw $t4,8($t1) 		# x pac
-		lw $t5,12($t1) 		# y pac
-		sub $s0,$t2,$t4 	# $s0 = xG - xP
-		sub $s1,$t3,$t5 	# $s1 = yG - yP
-		blt $s0,0,x_negativo_ghost
-		#######
-		# x positivo
-		#######
-		j x_positivo_ghost
-		
-###################
-# MOVE GHOST BLUE
-##################		
-MOVE_GHOST_BLUE:
-	addi $sp,$sp,-4
-	sw $ra,0($sp)
-	la $s4,fantasma_azul
-	lw $t0,44($s4)
-	bnez $t0,ghost_sai_casa_top # Faz o ghost sair da casinha
-	bnez $t0,padrao_ghost_aleatorio1 	# Se o PowerUp esta ativo
-	la $t3,quantidade_players
-	lw $t3,0($t3)			# Carrega quantidade de players
-	blt $t3,3,padrao_ghost_aleatorio1 	# Se tiver só 2 pac anda no padrão aleatorio 1
-	#####################
-	# Tem 3 pacs ou mais
-	#lw $t0,48($s4) 				# carrega quantidade anda aleatorio
-	#beq $t0,0,procura_pac_azul 		# se a quantidade anda aleatorio for zero, procura o pac
-	#addi $t0,$t0,-1 			# decrementa andar aleatorio
-	#sw $t0,48($s4) 				# salva andar aleatorio decrementado
-	#lw $t3,32($s4)				# carrega direção ghost
-	j padrao_ghost_horario
-	procura_pac_azul:
-		la $t1,pac_azul
-		li $t0,20
-		sw $t0,48($s4) 		# salva andar 30 frames aleatorios
-		lw $t2,8($s4) 		# x fantasma
-		lw $t3,12($s4) 		# y fantasm
-		lw $t4,8($t1) 		# x pac
-		lw $t5,12($t1) 		# y pac
-		sub $s0,$t2,$t4 	# $s0 = xG - xP
-		sub $s1,$t3,$t5 	# $s1 = yG - yP
-		blt $s0,0,x_negativo_ghost
-		#######
-		# x positivo
-		#######
-		j x_positivo_ghost
-
-###################
-# MOVE GHOST ORANGE
-##################		
-MOVE_GHOST_ORANGE:
-	addi $sp,$sp,-4
-	sw $ra,0($sp)
-	la $s4,fantasma_laranja
-	lw $t0,44($s4)
-	bnez $t0,ghost_sai_casa_top # Faz o ghost sair da casinha
-	bnez $t0,padrao_ghost_aleatorio1 	# Se o PowerUp esta ativo
-	la $t3,quantidade_players
-	lw $t3,0($t3)			# Carrega quantidade de players
-	blt $t3,3,padrao_ghost_aleatorio1 	# Se tiver só 2 pac anda no padrão aleatorio 1
-	#####################
-	# Tem 3 pacs ou mais
-	#lw $t0,48($s4) 				# carrega quantidade anda aleatorio
-	#beq $t0,0,procura_pac_roxo 		# se a quantidade anda aleatorio for zero, procura o pac
-	#addi $t0,$t0,-1 			# decrementa andar aleatorio
-	#sw $t0,48($s4) 				# salva andar aleatorio decrementado
-	#lw $t3,32($s4)				# carrega direção ghost
-	j padrao_ghost_horario
-	procura_pac_roxo:
-		la $t1,pac_roxo
-		li $t0,20
-		sw $t0,48($s4) 		# salva andar 30 frames aleatorios
-		lw $t2,8($s4) 		# x fantasma
-		lw $t3,12($s4) 		# y fantasm
-		lw $t4,8($t1) 		# x pac
-		lw $t5,12($t1) 		# y pac
-		sub $s0,$t2,$t4 	# $s0 = xG - xP
-		sub $s1,$t3,$t5 	# $s1 = yG - yP
-		blt $s0,0,x_negativo_ghost
-		#######
-		# x positivo
-		#######
-		j x_positivo_ghost
+	#lw $t6,48($s4)
+	#beq $t6,$t0,padrao_ghost_aleatorio1 # Se o pac volta pra direção anterior ele anda em padrao aleatorio
+	j padrao_ghost_aleatorio1
 	
-##################	
+move_ghost_blue:
+	j return_move
+
 ghost_sai_casa_top:
 		addi $t0,$t0,-1
 		sw $t0,44($s4)
@@ -846,12 +627,19 @@ x_positivo_ghost:
 		beq $s1,0,x_positivo_y_igual_ghost
 		jal MOVE_GHOST_TOP
 		beq $v0,1,return_move # Se conseguiu ir para cima
-		j padrao_ghost_aleatorio1_top
-		#########
+		jal MOVE_GHOST_RIGHT
+		beq $v0,1,return_move # Se conseguiu ir para direita
+		jal MOVE_GHOST_DOWN
+		beq $v0,1,return_move # Se conseguiu ir para baixo
+		j return_move
 	x_positivo_y_negativo_ghost:
 		jal MOVE_GHOST_DOWN
 		beq $v0,1,return_move # Se conseguiu ir para baixo
-		j padrao_ghost_aleatorio1_down
+		jal MOVE_GHOST_RIGHT
+		beq $v0,1,return_move # Se conseguiu ir para direita
+		jal MOVE_GHOST_TOP
+		beq $v0,1,return_move # Se conseguiu ir para cima
+		j return_move
 x_negativo_ghost:
 	jal MOVE_GHOST_RIGHT
 	beq $v0,1,return_move # Se conseguiu ir para direita
@@ -862,11 +650,20 @@ x_negativo_ghost:
 	x_negativo_y_positivo_ghost:
 		beq $s1,0,x_negativo_y_igual_ghost
 		jal MOVE_GHOST_TOP
-		j padrao_ghost_aleatorio1_left
+		beq $v0,1,return_move # Se conseguiu ir para cima
+		jal MOVE_GHOST_LEFT
+		beq $v0,1,return_move # Se conseguiu ir para esquerda
+		jal MOVE_GHOST_DOWN
+		beq $v0,1,return_move # Se conseguiu ir para baixo
+		j return_move
 	x_negativo_y_negativo_ghost:
 		jal MOVE_GHOST_DOWN
 		beq $v0,1,return_move # Se conseguiu ir para baixo
-		j padrao_ghost_aleatorio1_right
+		jal MOVE_GHOST_LEFT
+		beq $v0,1,return_move # Se conseguiu ir para esquerda
+		jal MOVE_GHOST_TOP
+		beq $v0,1,return_move # Se conseguiu ir para cima
+		j return_move
 
 x_igual_ghost:
 	blt $s1,0,x_igual_y_negativo_ghost
@@ -876,20 +673,44 @@ x_igual_ghost:
 	x_igual_y_positivo_ghost:
 		jal MOVE_GHOST_TOP
 		beq $v0,1,return_move # Se conseguiu ir para top
-		j padrao_ghost_aleatorio1_left
+		jal MOVE_GHOST_RIGHT
+		beq $v0,1,return_move # Se conseguiu ir para direita
+		jal MOVE_GHOST_DOWN
+		beq $v0,1,return_move # Se conseguiu ir para baixo
+		jal MOVE_GHOST_LEFT
+		beq $v0,1,return_move # Se conseguiu ir para esquerda
+		j return_move
 	x_igual_y_negativo_ghost:
 		jal MOVE_GHOST_DOWN
 		beq $v0,1,return_move # Se conseguiu ir para baixo
-		j padrao_ghost_aleatorio1_right
+		jal MOVE_GHOST_LEFT
+		beq $v0,1,return_move # Se conseguiu ir para esquerda
+		jal MOVE_GHOST_RIGHT
+		beq $v0,1,return_move # Se conseguiu ir para direita
+		jal MOVE_GHOST_TOP
+		beq $v0,1,return_move # Se conseguiu ir para top
+		j return_move
 x_positivo_y_igual_ghost:
 	jal MOVE_GHOST_RIGHT
 	beq $v0,1,return_move # Se conseguiu ir para direita
-	j padrao_ghost_aleatorio1_top
+	jal MOVE_GHOST_DOWN
+	beq $v0,1,return_move # Se conseguiu ir para baixo
+	jal MOVE_GHOST_LEFT
+	beq $v0,1,return_move # Se conseguiu ir para esquerda
+	jal MOVE_GHOST_TOP
+	beq $v0,1,return_move # Se conseguiu ir para top
+	j return_move
 
 x_negativo_y_igual_ghost:
 	jal MOVE_GHOST_LEFT
 	beq $v0,1,return_move # Se conseguiu ir para esquerda
-	j padrao_ghost_aleatorio1_left
+	jal MOVE_GHOST_TOP
+	beq $v0,1,return_move # Se conseguiu ir para top
+	jal MOVE_GHOST_RIGHT
+	beq $v0,1,return_move # Se conseguiu ir para direita
+	jal MOVE_GHOST_DOWN
+	beq $v0,1,return_move # Se conseguiu ir para baixo
+	j return_move
 
 padrao_ghost_aleatorio1:
 	lw $t3,32($s4)				# carrega direção ghost
@@ -898,58 +719,54 @@ padrao_ghost_aleatorio1:
 	beq $t3,6,padrao_ghost_aleatorio1_down
 	beq $t3,7,padrao_ghost_aleatorio1_left
 	padrao_ghost_aleatorio1_top:
+		jal MOVE_GHOST_TOP
+		beq $v0,1,return_move # Se conseguiu ir para top
 		li $v0,41 # Le um numero aleatorio desse endereço
 		syscall
 		li $t0,2 
 		div $a0,$t0 # o numero aleatorio returna em $a0
 		mfhi $t0
 		beq $t0,0,padrao_ghost_aleatorio1_left
-		move $s0,$a0
-		jal MOVE_GHOST_TOP
-		beq $v0,1,return_move # Se conseguiu ir para to
 		#Se não conseguir
 		li $t0,3
-		div $s0,$t0
+		div $a0,$t0
 		mfhi $t0
 		beq $t0,0,padrao_ghost_aleatorio1_down
 	padrao_ghost_aleatorio1_right:
+		jal MOVE_GHOST_RIGHT
+		beq $v0,1,return_move # Se conseguiu ir para direita
 		li $v0,41 # Le um numero aleatorio desse endereço
 		syscall
 		li $t0,2 
 		div $a0,$t0 # o numero aleatorio returna em $a0
 		mfhi $t0
 		beq $t0,0,padrao_ghost_aleatorio1_top
-		move $s0,$a0
-		jal MOVE_GHOST_RIGHT
-		beq $v0,1,return_move # Se conseguiu ir para direita
 		li $t0,3
-		div $s0,$t0
+		div $a0,$t0
 		mfhi $t0
 		beq $t0,0,padrao_ghost_aleatorio1_left
 	padrao_ghost_aleatorio1_down:
+		jal MOVE_GHOST_DOWN
+		beq $v0,1,return_move # Se conseguiu ir para baixo
 		li $v0,41 # Le um numero aleatorio desse endereço
 		syscall
 		li $t0,2 
 		div $a0,$t0 # o numero aleatorio returna em $a0
 		mfhi $t0
 		beq $t0,0,padrao_ghost_aleatorio1_right
-		move $s0,$a0
-		jal MOVE_GHOST_DOWN
-		beq $v0,1,return_move # Se conseguiu ir para baixo
 		li $t0,3
-		div $s0,$t0
+		div $a0,$t0
 		mfhi $t0
 		beq $t0,0,padrao_ghost_aleatorio1_top
 	padrao_ghost_aleatorio1_left:
+		jal MOVE_GHOST_LEFT
+		beq $v0,1,return_move # Se conseguiu ir para esquerda
 		li $v0,41 # Le um numero aleatorio desse endereço
 		syscall
 		li $t0,2 
 		div $a0,$t0 # o numero aleatorio returna em $a0
 		mfhi $t0
 		beq $t0,0,padrao_ghost_aleatorio1_down
-		move $s0,$a0
-		jal MOVE_GHOST_LEFT
-		beq $v0,1,return_move # Se conseguiu ir para esquerda
 		li $t0,3
 		div $a0,$t0
 		mfhi $t0
@@ -1275,18 +1092,9 @@ VERIFICA_POSSIBILIDADE:
 	#	
 	beq $t4,0x18,pac_possibilidade		# $t4 = 0x18 (pac_verde) vai para pac_possibilidade
 	#
-	beq $t4,0xC0,pac_possibilidade		# $t4 = 0xC0 (pac_azul) vai para pac_possibilidade
-	#
-	beq $t4,0x86,pac_possibilidade		# $t4 = 0x86 (pac_roxo) vai para pac_possibilidade
-	#
 	beq $t4,0x07,fantasma_possibilidade	# $t4 = 0x07 (fantasma_vermelho) vai para fantasma_possibilidade
 	#
 	beq $t4,0x87,fantasma_possibilidade	# $t4 = 0x87 (fantasma_rosa) vai para fantasma_possibilidade
-	#
-	beq $t4,0xF8,fantasma_possibilidade	# $t4 = 0xF8 (fantasma_azul_claro) vai para fantasma_possibilidade
-	#
-	beq $t4,0x27,fantasma_possibilidade	# $t4 = 0x87 (fantasma_laranja) vai para fantasma_possibilidade
-	#
 	li $v0,0				# Indica que que não é um pac ou um fantasma
 	j return_verifica_possibilidade		# se chegar aqui, não é um pac ou um fantasma
 
@@ -1314,7 +1122,7 @@ VERIFICA_POSSIBILIDADE:
 		addi $a0,$a0,50				# adiciona 50 na pontuação do pac
 		sw $a0,40($s3)				# $a0 = pontuação
 		lw $a2,36($s3)				# $a2 = posicao score
-		li $t4,300				# quantidade frames pac especial
+		li $t4,150				# quantidade frames pac especial
 		sw $t4,60($s3)				# salva frames 
 		la $t0,fantasma_vermelho		
 		sw $t4,40($t0)				# Ativa fantasma vermelho pac powerup
@@ -1410,31 +1218,14 @@ fim_musica:
 RENDERIZA:
 	addi $sp,$sp,-4
 	sw $ra,0($sp)
-	la $t1,quantidade_players
-	lw $t1,0($t1)
-	beq $t1,1,renderiza_always
-	beq $t1,2,renderiza_dois_players
-	beq $t1,3,renderiza_tres_players
-	renderiza_quatro_players:
-		la $a0,pac_roxo
-		jal RENDERIZA_PAC
-	renderiza_tres_players:
-		la $a0,pac_azul
-		jal RENDERIZA_PAC
-	renderiza_dois_players:
-		la $a0,pac_verde
-		jal RENDERIZA_PAC
-	renderiza_always:
-		la $a0,pac_amarelo		# Carrega desenho
-		jal RENDERIZA_PAC
-		la $a0,fantasma_vermelho
-		jal RENDERIZA_GHOST
-		la $a0,fantasma_rosa
-		jal RENDERIZA_GHOST
-		la $a0,fantasma_azul
-		jal RENDERIZA_GHOST
-		la $a0,fantasma_laranja
-		jal RENDERIZA_GHOST
+	la $a0,pac_amarelo		# Carrega desenho
+	jal RENDERIZA_PAC
+	la $a0,pac_verde
+	jal RENDERIZA_PAC
+	la $a0,fantasma_vermelho
+	jal RENDERIZA_GHOST
+	la $a0,fantasma_rosa
+	jal RENDERIZA_GHOST
 	lw $ra,0($sp)
 	addi $sp,$sp,4
 	jr $ra
@@ -1621,73 +1412,42 @@ INIT_PONTUACOES:
 	addi $sp,$sp,-8
 	sw $ra,0($sp)
 	sw $s0,4($sp)
-	la $t1,quantidade_players
-	lw $t1,0($t1)
-	beq $t1,1,init_p_yellow
-	beq $t1,2,init_p_green
-	beq $t1,3,init_p_blue
-	init_p_roxo:
-		# Início roxo
-		li $a0,0				# Número a ser printado
-		li $a2,180				# linha score azul pac
-		jal PRINT_SCORE
-		li $s0,260 
-	loop_init_p_roxo:
-		move $a0,$s0				# x
-		li $a1,190				# y
-		li $a2,0x86 #roxo
-		la $a3,pac_man_open_right
-		jal PRINT_DESENHO_PERSONAGEM
-		addi $s0,$s0,15
-		bne $s0,305,loop_init_p_roxo
-	init_p_blue:
-		# Início azul
-		li $a0,0				# Número a ser printado
-		li $a2,130				# linha score azul pac
-		jal PRINT_SCORE
-		li $s0,260 
-	loop_init_p_blue:
-		move $a0,$s0				# x
-		li $a1,140				# y
-		li $a2,0xC0 #azul
-		la $a3,pac_man_open_right
-		jal PRINT_DESENHO_PERSONAGEM
-		addi $s0,$s0,15
-		bne $s0,305,loop_init_p_blue
-	init_p_green:
-		# Início Green
-		li $a0,0				# Número a ser printado
-		li $a2,80				# linha score red pac
-		jal PRINT_SCORE
-		li $s0,260 
-	loop_init_p_green:
-		move $a0,$s0				# x
-		li $a1,90				# y
-		li $a2,0x18 #green
-		la $a3,pac_man_open_right
-		jal PRINT_DESENHO_PERSONAGEM
-		addi $s0,$s0,15
-		bne $s0,305,loop_init_p_green
-	####################33	
-	init_p_yellow:
-		# Início pontuação yellow
-		li $a0,0				# Número a ser printado
-		li $a2,30				# linha score yellow pac
-		jal PRINT_SCORE 
-		li $s0,260
+	# Início pontuação yellow
+	li $a0,0				# Número a ser printado
+	li $a2,30				# linha score yellow pac
+	jal PRINT_SCORE
+	li $s0,260				# x
+	li $a0,260				# x
+	li $a1,40				# y
 	loop_init_p_yellow:	
-		move $a0,$s0				# x
+		move $a0,$s0
 		li $a1,40				# y
 		li $a2,0x3F #red
 		la $a3,pac_man_open_right
 		jal PRINT_DESENHO_PERSONAGEM
 		addi $s0,$s0,15
 		bne $s0,305,loop_init_p_yellow
+		# Início Red
+		li $a0,0				# Número a ser printado
+		li $a2,80				# linha score red pac
+		jal PRINT_SCORE
+		li $s0,260				# x
+		li $a0,260				# x
+		li $a1,90				# y
+	loop_init_p_green:	
+		move $a0,$s0
+		li $a1,90				# y
+		li $a2,0x18 #green
+		la $a3,pac_man_open_right
+		jal PRINT_DESENHO_PERSONAGEM
+		addi $s0,$s0,15
+		bne $s0,305,loop_init_p_green
 		#
 		lw $s0,4($sp)
 		lw $ra,0($sp)
-		addi $sp,$sp,8 
-		jr $ra	  
+		addi $sp,$sp,8
+		jr $ra	    
+
 #############################################
 # PRINT SCORE # $a0=numero a ser printado, $a2= linha(y)
 #############################################	
@@ -1718,25 +1478,6 @@ INIT_PAC_GREEN:
 	la $a3,pac_man_open_left
 	j INIT_PERSONAGEM
 
-###########################################
-# INICIA PAC AZUL
-###########################################
-INIT_PAC_BLUE:
-	addi $sp,$sp,-4
-	sw $ra,0($sp)
-	la $t0,pac_azul
-	la $a3,pac_man_open_right
-	j INIT_PERSONAGEM
-	
-###########################################
-# INICIA PAC ROXO
-###########################################
-INIT_PAC_ROXO:
-	addi $sp,$sp,-4
-	sw $ra,0($sp)
-	la $t0,pac_roxo
-	la $a3,pac_man_open_left
-	j INIT_PERSONAGEM
 ###########################################
 # INICIA PERSONAGEM
 ###########################################		
@@ -1850,8 +1591,6 @@ DESENHO_ESCOLHA:
 	beq $a2,0xFA,desenho_comidona
 	beq $a2,0x3F,desenho_personagem # pac_amarelo
 	beq $a2,0x18,desenho_personagem # pac_verde
-	beq $a2,0xC0,desenho_personagem # pac_azul
-	beq $a2,0x86,desenho_personagem # pac_roxo
 	beq $a2,0x07,desenho_personagem # ghost vermelho
 	beq $a2,0x87,desenho_personagem # ghost pink
 	beq $a2,0xF8,desenho_personagem # ghost azul claro
@@ -1933,14 +1672,14 @@ DESENHO_ESCOLHA:
 		power_up_pac_ativo:
 			lw $t3,64($a3) 				# $t3 = indicar(troca ou não a cor)
 			beq $t3,0,nao_troca_cor_personagem
-			addi $t3,$t3,-1
+			li $t3,0
 			sw $t3,64($a3)  		# na proxima nao troca a cor
 			addi $t4,$t4,-1			# diminui o tempo do powerUp
 			sw $t4,60($a3) 			# salvar tempo
-			li $a2, 0x07 			# TROCA A COR PARA BRANCA
+			li $a2, 0xFF 			# TROCA A COR PARA BRANCA
 			j switch_desenho_personagem
 		nao_troca_cor_personagem:
-			li $t3,3
+			li $t3,1
 			sw $t3,64($a3) 			# na proxima troca a cor
 			addi $t4,$t4,-1			# diminui o tempo do powerUp
 			sw $t4,60($a3) 			# salvar tempo
@@ -2094,7 +1833,7 @@ DESENHO_ESCOLHA:
 			la $a3,ghost_down1
 			j print_personagem
 			desenho_ghost_down_2:
-				li $t0,0
+				li $t0,1
 				sw $t0,36($a3)
 				la $a3,ghost_down2
 			j print_personagem
@@ -2298,41 +2037,13 @@ reset_pac_verde:
 	la $t2,pac_verde
 	la $t3,pac_verde_backup
 	loop_reset_pac_verde: 
-		beq $t1,$t0,reset_pac_azul
-		lw $t4,0($t3) 	# ler de pac_verde_backup
-		sw $t4,0($t2)	# salva em pac_verde	
-		addi $t2,$t2,4
-		addi $t3,$t3,4
-		addi $t1,$t1,1
-		j loop_reset_pac_verde
-###################
-reset_pac_azul:
-	li $t0,16
-	li $t1,0
-	la $t2,pac_azul
-	la $t3,pac_azul_backup
-	loop_reset_pac_azul: 
-		beq $t1,$t0,reset_pac_roxo
-		lw $t4,0($t3) 	# ler de pac_azul_backup
-		sw $t4,0($t2)	# salva em pac_azul	
-		addi $t2,$t2,4
-		addi $t3,$t3,4
-		addi $t1,$t1,1
-		j loop_reset_pac_azul
-###################
-reset_pac_roxo:
-	li $t0,16
-	li $t1,0
-	la $t2,pac_roxo
-	la $t3,pac_roxo_backup
-	loop_reset_pac_roxo: 
 		beq $t1,$t0,reset_fantasma_vermelho
-		lw $t4,0($t3) 	# ler de pac_roxo_backup
-		sw $t4,0($t2)	# salva em pac_azul	
+		lw $t4,0($t3) 	# ler de pac_amarelo_backup
+		sw $t4,0($t2)	# salva em pac_amarelo	
 		addi $t2,$t2,4
 		addi $t3,$t3,4
 		addi $t1,$t1,1
-		j loop_reset_pac_roxo		
+		j loop_reset_pac_verde	
 ######################
 reset_fantasma_vermelho:
 	li $t0,13
